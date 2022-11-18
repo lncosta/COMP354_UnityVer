@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ShelfType { TOREAD, READ, FAVORITES, RECOMMENDATION, READING};
-public enum Genre { ROMANCE, HORROR, HISTORICAL, ACTION, THRILLER, FICTION, COMEDY, CHILDREN };
+public enum ShelfType { TOREAD, READ, FAVORITES, RECOMMENDATION, READING, DONOTREC};
+public enum Genre { FICTION, ROMANCE, HORROR, HISTORICAL, ACTION, THRILLER, COMEDY, CHILDREN };
 public class Shelf : MonoBehaviour
 {
 

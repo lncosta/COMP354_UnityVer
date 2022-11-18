@@ -18,4 +18,6 @@ public class Book : ScriptableObject
 
     public string author;
     public int rating;
+
+    public Sprite bookCover; 
 }

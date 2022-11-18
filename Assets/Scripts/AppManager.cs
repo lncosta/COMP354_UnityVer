@@ -2,16 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class User : MonoBehaviour
+public class AppManager : MonoBehaviour
 {
 
-    public string userName;
-    public string password;
-    public string email;
+    public GameObject loginCanvas;
+    public GameObject mainAppCanvas;
 
-    public UserShelves shelfData; 
-
-
+    public int currentPage;
     // Start is called before the first frame update
     void Start()
     {
