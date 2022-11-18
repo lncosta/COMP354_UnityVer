@@ -1,0 +1,85 @@
+1,Harry Potter and the Half-Blood Prince (Harry Potter  #6),J.K. Rowling/Mary GrandPré,4.57,english,652,2095690,9/16/06,Scholastic Inc.
+2,Harry Potter and the Order of the Phoenix (Harry Potter  #5),J.K. Rowling/Mary GrandPré,4.49,english,870,2153167,9/1/04,Scholastic Inc.
+4,Harry Potter and the Chamber of Secrets (Harry Potter  #2),J.K. Rowling,4.42,english,352,6333,11/1/03,Scholastic
+5,Harry Potter and the Prisoner of Azkaban (Harry Potter  #3),J.K. Rowling/Mary GrandPré,4.56,english,435,2339585,5/1/04,Scholastic Inc.
+8,Harry Potter Boxed Set  Books 1-5 (Harry Potter  #1-5),J.K. Rowling/Mary GrandPré,4.78,english,2690,41428,9/13/04,Scholastic
+9,"Unauthorized Harry Potter Book Seven News: ""Half-Blood Prince"" Analysis and Speculation",W. english-USderick Zimmerman,3.74,english-US,152,19,4/26/05,Nimble Books
+10,Harry Potter Collection (Harry Potter  #1-6),J.K. Rowling,4.73,english,3342,28242,9/12/05,Scholastic
+12,The Ultimate Hitchhiker's Guide: Five Complete Novels and One Story (Hitchhiker's Guide to the Galaxy  #1-5),Douglas Adams,4.38,english,815,3628,11/1/05,Gramercy Books
+13,The Ultimate Hitchhiker's Guide to the Galaxy (Hitchhiker's Guide to the Galaxy  #1-5),Douglas Adams,4.38,english,815,249558,4/30/02,Del Rey Books
+14,The Hitchhiker's Guide to the Galaxy (Hitchhiker's Guide to the Galaxy  #1),Douglas Adams,4.22,english,215,4930,8/3/04,Crown
+16,The Hitchhiker's Guide to the Galaxy (Hitchhiker's Guide to the Galaxy  #1),Douglas Adams/Stephen Fry,4.22,english,6,1266,3/23/05,Random House Audio
+18,The Ultimate Hitchhiker's Guide (Hitchhiker's Guide to the Galaxy  #1-5),Douglas Adams,4.38,english,815,2877,1/17/96,Wings Books
+21,A Short History of Nearly Everything,Bill Bryson,4.21,english,544,248558,9/14/04,Broadway Books
+22,Bill Bryson's African Diary,Bill Bryson,3.44,english,55,7270,12/3/02,Broadway Books
+23,Bryson's Dictionary of Troublesome Words: A Writer's Guide to Getting It Right,Bill Bryson,3.87,english,256,2088,9/14/04,Broadway Books
+24,In a Sunburned Country,Bill Bryson,4.07,english,335,72451,5/15/01,Broadway Books
+25,I'm a Stranger Here Myself: Notes on Returning to America After Twenty Years Away,Bill Bryson,3.9,english,304,49240,6/28/00,Broadway Books
+26,The Lost Continent: Travels in Small Town America,Bill Bryson,3.83,english,299,45712,8/28/90,William Morrow Paperbacks
+27,Neither Here nor There: Travels in Europe,Bill Bryson,3.86,english,254,48701,3/28/93,William Morrow Paperbacks
+28,Notes from a Small Island,Bill Bryson,3.91,english,324,80609,5/28/97,William Morrow Paperbacks
+29,The Mother Tongue: englishlish and How It Got That Way,Bill Bryson,3.93,english,270,28489,9/28/91,William Morrow Paperbacks
+30,J.R.R. Tolkien 4-Book Boxed Set: The Hobbit and The Lord of the Rings,J.R.R. Tolkien,4.59,english,1728,101233,9/25/12,Ballantine Books
+31,The Lord of the Rings (The Lord of the Rings  #1-3),J.R.R. Tolkien,4.5,english,1184,1710,10/21/04,Houghton Mifflin Harcourt
+34,The Fellowship of the Ring (The Lord of the Rings  #1),J.R.R. Tolkien,4.36,english,398,2128944,9/5/03,Houghton Mifflin Harcourt
+35,The Lord of the Rings (The Lord of the Rings  #1-3),J.R.R. Tolkien/Alan  Lee,4.5,english-US,1216,1618,10/1/02,Houghton Mifflin Harcourt
+36,The Lord of the Rings: Weapons and Warfare,Chris   Smith/Christopher  Lee/Richard Taylor,4.53,english,218,19822,11/5/03,Houghton Mifflin Harcourt
+37,The Lord of the Rings: Complete Visual Companion,Jude Fisher,4.5,english,224,359,11/15/04,Houghton Mifflin Harcourt
+45,Agile Web Development with Rails: A Pragmatic Guide,Dave Thomas/David Heinemeier Hansson/Leon Breedt/Mike Clark/Thomas  Fuchs/Andreas  Schwarz,3.84,english,558,1430,7/28/05,Pragmatic Bookshelf
+50,Hatchet (Brian's Saga  #1),Gary Paulsen,3.72,english,208,270244,4/1/00,Atheneum Books for Young Readers: Richard Jackson Books
+51,"Hatchet: A Guide for Using ""Hatchet"" in the Classroom",Donna Ickes/Edward Sciranko/Keith Vasconcelles,4,english,48,36,8/28/94,Teacher Created Resources
+53,Guts: The True Stories behind Hatchet and the Brian Books,Gary Paulsen,3.88,english,144,2067,1/23/01,Delacorte Press
+54,Molly Hatchet - 5 of the Best,Molly Hatchet,4.33,english,56,6,6/10/03,Cherry Lane Music Company
+55,Hatchet Jobs: Writings on Contemporary Fiction,Dale Peck,3.45,english-US,228,99,11/1/05,The New Press
+57,A Changeling for All Seasons (Changeling Seasons #1),Angela Knight/Sahara Kelly/Judy Mays/Marteeka Karland/Kate Douglas/Shelby Morgen/Lacey Savage/Kate Hill/Willa Okati,3.76,english,304,167,11/1/05,Changeling Press
+58,Changeling (Changeling  #1),Delia Sherman,3.6,english,256,978,8/17/06,Viking Juvenile
+59,The Changeling Sea,Patricia A. McKillip,4.06,english,137,4454,4/14/03,Firebird
+61,The Changeling,Zilpha Keatley Snyder,4.17,english,228,1176,6/8/04,iUniverse
+63,The Changeling,Kate Horsley,3.55,english,339,301,4/12/05,Shambhala
+66,The Changeling (Daughters of englishland  #15),Philippa Carr,3.98,english,369,345,8/28/90,Ivy Books
+67,The Known World,Edward P. Jones,3.83,english,388,29686,8/29/06,Amistad
+68,The Known World,Edward P. Jones/Kevin R. english-USe,3.83,english-US,14,55,6/15/04,HarperAudio
+69,The Known World,Edward P. Jones,3.83,english,576,22,6/15/04,Harper
+71,Traders  Guns & Money: Knowns and Unknowns in the Dazzling World of Derivatives,Satyajit Das,3.83,english,334,1456,5/15/06,FT Press
+72,Artesia: Adventures in the Known World,Mark Smylie,4.13,english,352,52,12/14/05,Archaia
+74,The John McPhee Reader (John McPhee Reader  #1),John McPhee/William Howarth,4.42,english,416,562,6/1/82,Farrar  Straus and Giroux
+75,Uncommon Carriers,John McPhee,3.95,english-US,248,1630,5/16/06,Farrar Straus Giroux
+76,Heirs of General Practice,John McPhee,4.17,english,128,268,4/1/86,Farrar  Straus and Giroux
+77,The Control of Nature,John McPhee,4.24,english-US,288,3498,9/1/90,Farrar  Straus and Giroux
+78,Annals of the Former World,John McPhee,4.34,english,720,3115,1/6/99,Farrar  Straus and Giroux
+79,Coming Into the Country,John McPhee,4.22,english,448,5704,4/1/91,Farrar  Straus and Giroux
+80,La Place de la Concorde Suisse,John McPhee,3.92,english-US,160,698,4/1/94,Farrar  Straus and Giroux
+81,Giving Good Weight,John McPhee,4.23,english,288,542,4/1/94,Farrar  Straus and Giroux
+83,Rising from the Plains,John McPhee,4.23,english,208,1341,11/1/87,Farrar  Straus and Giroux
+85,The Heidi Chronicles,Wendy Wasserstein,3.75,english,81,1423,3/1/02,Dramatists Play Service
+86,The Heidi Chronicles: Uncommon Women and Others & Isn't It Romantic,Wendy Wasserstein,3.84,english,249,2766,7/2/91,Vintage
+89,Active Literacy Across the Curriculum: Strategies for Reading  Writing  Speaking  and Listening,Heidi Hayes Jacobs,3.94,english,138,31,3/29/06,Routledge
+90,Simply Beautiful Beaded Jewelry,Heidi Boyd,3.77,english-US,128,62,3/14/06,North Light Books
+91,Always Enough: God's Miraculous Provision Among the Poorest Children on Earth,Heidi Baker/Rolland Baker,4.46,english,192,860,9/1/03,Chosen Books
+92,Mapping the Big Picture: Integrating Curriculum & Assessment K-12,Heidi Hayes Jacobs,3.68,english-US,108,77,1/28/97,Association for Supervision & Curriculum Development
+93,Heidi (Heidi  #1-2),Johanna Spyri/Beverly Cleary/Angelo  Rinaldi,3.99,english,352,153317,11/15/02,Kingfisher
+94,Getting Results with Curriculum Mapping,Heidi Hayes Jacobs,3.25,english,192,55,11/15/04,ASCD
+96,There's Always Enough: The Miraculous Move of God in Mozambique,Rolland Baker/Heidi Baker,4.46,english,192,34,4/28/03,Sovereign World
+98,What to Expect the First Year (What to Expect),Heidi Murkoff/Sharon Mazel/Arlene Eisenberg/Sandee Hathaway/Mark D. Widome,3.89,english,832,11797,10/16/03,Workman Publishing Company
+99,The Player's Handbook: The Ultimate Guide on Dating and Relationships,Heidi Fleiss/Libby Keatinge,3.82,english,123,34,5/10/04,One Hour Entertainment
+100,Simply Beautiful Beading: 53 Quick and Easy Projects,Heidi Boyd,3.78,english-US,128,78,8/19/04,North Light Books
+103,God Emperor of Dune (Dune Chronicles  #4),Frank Herbert,3.84,english,423,2785,6/15/87,Ace Books
+105,Chapterhouse: Dune (Dune Chronicles #6),Frank Herbert,3.91,english,436,38778,7/1/87,Ace Books
+106,Dune Messiah (Dune Chronicles #2),Frank Herbert,3.88,english,331,97494,7/15/87,Ace Books
+107,Dreamer of Dune: The Biography of Frank Herbert,Brian Herbert,4.01,english-US,592,784,7/1/04,Tor Books
+109,Heretics of Dune (Dune Chronicles  #5),Frank Herbert,3.86,english,480,272,4/16/84,Putnam
+110,The Road to Dune,Frank Herbert/Brian Herbert/Kevin J. Anderson,3.88,english,426,4789,8/29/06,Tor Science Fiction
+117,Heretics of Dune (Dune Chronicles #5),Frank Herbert,3.86,english,471,45388,8/15/87,Ace Books
+119,The Lord of the Rings: The Art of the Fellowship of the Ring,Gary Russell,4.59,english,192,26153,6/12/02,Houghton Mifflin Harcourt
+122,The Power of One (The Power of One  #1),Bryce Courtenay,4.35,english,544,69167,9/29/96,Ballantine Books
+123,The Power of One (The Power of One  #1),Bryce Courtenay,4.35,english,291,45,9/13/05,Delacorte Books for Young Readers
+129,The Power of One: One Person  One Rule  One Month,John C. Maxwell/Stephen R. Graves/Thomas G. Addington,4.28,english-US,256,16,11/1/04,Thomas Nelson
+130,Power of an Hour: Business and Life Mastery in One Hour a Week,Dave Lakhani,3.34,english,205,174,5/19/06,Wiley
+131,The Power of One: The Solo Play for Playwrights  Actors  and Directors,Louis E. Catron,3.67,english,240,10,2/7/00,Heinemann Drama
+132,How to Buy  Sell & Profit on eBay: Kick-Start Your Home-Based Business in Just Thirty Days,Adam Ginsberg,3.48,english,336,76,5/3/05,William Morrow Paperbacks
+133,eBay for Dummies,Marsha Collier,3.5,english,386,111,10/30/06,Wiley
+135,What to Sell on ebay and Where to Get It: The Definitive Guide to Product Sourcing for eBay and Beyond,Chris Malta/Lisa Suttora,3.62,english,260,24,1/24/06,McGraw-Hill
+137,Starting an eBay Business for Dummies,Marsha Collier,3.55,english,384,55,9/17/04,Wiley
+138,eBay: Top 100 Simplified Tips & Tricks,Julia Wilkinson,4.27,english,260,9,6/6/06,Wiley
+139,ebay Timesaving Techniques for Dummies,Marsha Collier,3.39,english-US,391,22,5/31/04,Wiley
+140,eBay Business All-in-One Desk Reference for Dummies,Marsha Collier,3.89,english-US,864,17,4/25/05,Wiley

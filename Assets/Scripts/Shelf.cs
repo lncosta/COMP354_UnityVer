@@ -1,9 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public enum ShelfType { TOREAD, READ, FAVORITES, RECOMMENDATION, READING, DONOTREC};
-public enum Genre { FICTION, ROMANCE, HORROR, HISTORICAL, ACTION, THRILLER, COMEDY, CHILDREN };
+[Flags] public enum Genre { 
+    FICTION = (1 << 0),
+    ROMANCE = (1 << 1),
+    HORROR = (1 << 2),
+    HISTORICAL = (1 << 3),
+    ACTION = (1 << 4),
+    THRILLER = (1 << 5),
+    COMEDY = (1 << 6),
+    CHILDREN = (1 << 7)
+};
 public class Shelf : MonoBehaviour
 {
 
