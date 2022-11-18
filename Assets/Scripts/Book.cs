@@ -10,9 +10,9 @@ public class Book : ScriptableObject
 
     public Shelf shelf = null;
 
-    public bool isFavorite;
-    public bool isRecommended;
-    public bool canBeRecommended;
+    public bool isFavorite = false;
+    public bool isRecommended = false;
+    public bool canBeRecommended = true;
 
     public Genre genre;
 
