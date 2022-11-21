@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShelfManager : MonoBehaviour
 {
    
-    public UserShelves shelvesForUser;
+    public UserShelf shelvesForUser;
 
     public GameObject blankBookSlot;
    

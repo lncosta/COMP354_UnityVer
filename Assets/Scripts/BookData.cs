@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "BookData", menuName = "ScriptableObjects/BookData", order = 1)]
-public class Book : ScriptableObject
+public class BookData : ScriptableObject
 {
     public string id;
     public string title;
@@ -25,8 +25,8 @@ public class Book : ScriptableObject
 
 
     // Equivalent of an object constructor.
-    public static Book Create(string id, string name, string author, float rating, Genre genre) {
-        Book newBook = ScriptableObject.CreateInstance<Book>();
+    public static BookData Create(string id, string name, string author, float rating, Genre genre) {
+        BookData newBook = ScriptableObject.CreateInstance<BookData>();
         AssetDatabase.CreateAsset(newBook, AssetDatabase.GenerateUniqueAssetPath("Assets/ScriptableObjects/BookData.asset"));
 
         newBook.Init(id, name, author, rating, genre);

@@ -2,13 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Uncomment once Userdata is ScriptableObject
-//[CreateAssetMenu(fileName = "UserData", menuName = "ScriptableObjects/UserData", order = 2)]
-public class UserData : MonoBehaviour
+[CreateAssetMenu(fileName = "UserData", menuName = "ScriptableObjects/UserData", order = 2)]
+public class UserData : ScriptableObject
 {
-    public string userName;
-    public string password;
-    public string email;
+    [SerializeField] string _userName;
+    [SerializeField] string _password;
+    [SerializeField] string _email;
+    [SerializeField] string[] _favoriteBooksIds;
+    [SerializeField] List<UserShelf> _customShelves;
 
-    public UserShelves shelfData;
+    // These are C# shortcuts for get methods.
+    public string UserName { get => _userName; }
+    public string Password { get => _password; }
+    public string Email { get => _email; }
+    public string[] FavoriteBookIds { get => _favoriteBooksIds; }
+    public List<UserShelf> CustomShelves { get => new List<UserShelf>(CustomShelves); }
+
+
+
+    public void SetNewUsername(string newName) { _userName = newName; }
+    public void SetNewPassword(string newPassword) { _password = newPassword; }
+    public void SetNewEmail(string newEmail) { _email = newEmail; }
 }

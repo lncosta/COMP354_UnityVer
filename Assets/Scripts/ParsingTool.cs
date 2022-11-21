@@ -20,7 +20,7 @@ public class ParsingTool {
         IEnumerable<string> textData = System.IO.File.ReadLines(filePath);
         foreach (var line in textData) {
             string[] values = line.Split(',');
-            Book.Create(values[0], values[1], values[2], float.Parse(values[3]), 0);
+            BookData.Create(values[0], values[1], values[2], float.Parse(values[3]), 0);
             output += $"\n - Book ({line})";
         }
 

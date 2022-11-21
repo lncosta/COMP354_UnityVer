@@ -14,21 +14,20 @@ public enum ShelfType { TOREAD, READ, FAVORITES, RECOMMENDATION, READING, DONOTR
     COMEDY = (1 << 6),
     CHILDREN = (1 << 7)
 };
-public class Shelf : MonoBehaviour
-{
+public class Shelf : MonoBehaviour {
 
     public ShelfType type;
-    public string shelfName; 
-    public List<Book> booksHeld = new List<Book>();
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string shelfName;
+    protected List<BookObject> booksHeld = new List<BookObject>();
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         //Perform updates based on shelf type
     }
+
+    // Casting down to IEnumerable prevents other classes 
+    // from freely modifying the contents of this shelf.
+    public IEnumerable<BookObject> GetBooks() => booksHeld;
+    // If getting a list is really necessary, replace GetBooks() by this:
+    // public List<BookObject> GetBooks() => new List<BookObject>(booksHeld);
 }
