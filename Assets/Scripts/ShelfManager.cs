@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class ShelfManager : MonoBehaviour
 {
    
    
     public GameObject blankBookSlot;
+    public GameObject shelfPanel;
+    public TextMeshProUGUI bookDescriptionText;
+    public GameObject FavoriteButton;
+
 
     public GameObject activeShelfContainer; 
 
