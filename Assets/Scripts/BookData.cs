@@ -24,6 +24,7 @@ public class BookData : ScriptableObject
     public Sprite bookCover;
 
 
+#if UNITY_EDITOR
     // Equivalent of an object constructor.
     public static BookData Create(string id, string name, string author, float rating, Genre genre) {
         BookData newBook = ScriptableObject.CreateInstance<BookData>();
@@ -34,6 +35,8 @@ public class BookData : ScriptableObject
 
         return newBook;
     }
+#endif
+
 
     // Value assignment part of constructor.
     void Init(string id, string title, string author, float rating, Genre genre) {
