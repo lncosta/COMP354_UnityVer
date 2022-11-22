@@ -9,14 +9,15 @@ public class UserData : ScriptableObject
     [SerializeField] string _password;
     [SerializeField] string _email;
     [SerializeField] string[] _favoriteBooksIds;
-    [SerializeField] List<UserShelf> _customShelves;
+    [SerializeField] List<Shelf> _customShelves;
+    
 
     // These are C# shortcuts for get methods.
     public string UserName { get => _userName; }
     public string Password { get => _password; }
     public string Email { get => _email; }
     public string[] FavoriteBookIds { get => _favoriteBooksIds; }
-    public List<UserShelf> CustomShelves { get => new List<UserShelf>(CustomShelves); }
+    public List<Shelf> CustomShelves { get => new List<Shelf>(CustomShelves); }
 
 
 

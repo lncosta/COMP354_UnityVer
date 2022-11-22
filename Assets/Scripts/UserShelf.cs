@@ -6,5 +6,5 @@ using UnityEngine;
 //[CreateAssetMenu(fileName = "New User Shelf", menuName = "User/User Shelves")]
 public class UserShelf : MonoBehaviour
 {
-
+    public List<Shelf> shelfList; //Store current state of user shelves data.
 }
