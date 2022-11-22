@@ -8,6 +8,8 @@ public class BookObject : MonoBehaviour {
 
     [SerializeField] BookData _data;
 
+    public BookData Data { get => _data; }
+
 
     public void Favorite() { OnFavorite.Invoke(this); }
     public void Unfavorite() { OnUnfavorite.Invoke(this); }
