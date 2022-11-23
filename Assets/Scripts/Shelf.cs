@@ -29,6 +29,24 @@ public class Shelf : MonoBehaviour {
         //Perform updates based on shelf type
     }
 
+    public void AddBook(BookObject book) {
+
+        if (book)
+        {
+            booksHeld.Add(book);
+        }
+    
+    }
+
+    public void RemoveBook(BookObject book)
+    {
+        if (book)
+        {
+            booksHeld.Remove(book);
+        }
+        
+    }
+
     // Casting down to IEnumerable prevents other classes 
     // from freely modifying the contents of this shelf.
     public IEnumerable<BookObject> GetBooks() => booksHeld;

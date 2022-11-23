@@ -13,18 +13,32 @@ public class ShelfManager : MonoBehaviour
     public TextMeshProUGUI bookDescriptionText;
     public GameObject FavoriteButton;
 
+    public BookObject currentBook; 
 
-    public GameObject activeShelfContainer; 
 
- 
+    public GameObject activeShelfContainer;
+    public Shelf currentShelf;
+
+
+
+
+    private void OnEnable()
+    {
+        ClearBookSlots();
+        MakeBookSlots();
+        Debug.Log("Shelf was loaded");
+        SetDescription("", false);
+    }
     public void setActive(ShelfType type)
     {
+        currentShelf = null; 
         foreach (Shelf shelf in AppManager.CurrentUser.Data.CustomShelves)
         { //Set Shelf Visibility for Current User
             if (shelf.type == type)
             {
                 shelf.shelfContainerInUI.SetActive(true);
-                activeShelfContainer = shelf.shelfContainerInUI; 
+                activeShelfContainer = shelf.shelfContainerInUI;
+                currentShelf = shelf;
             }
             else
             {
@@ -107,6 +121,72 @@ public class ShelfManager : MonoBehaviour
         output.Add(comedy);
         output.Add(children);
         return output;
+    }
+
+
+    public void BookWasSelected(string bookDescription, bool activeButton, BookObject newBook)
+    {
+        currentBook = newBook;
+        bookDescriptionText.text = bookDescription;
+        FavoriteButton.GetComponent<FavoriteButton>().Click(activeButton);
+    }
+
+
+    void ClearBookSlots()
+    {
+        for (int i = 0; i < shelfPanel.transform.childCount; i++)
+        {
+            Destroy(shelfPanel.transform.GetChild(i).gameObject);
+        }
+    }
+
+    public void SetDescription(string description, bool favoriteButtonActive)
+    {
+        bookDescriptionText.text = description;
+        FavoriteButton.GetComponent<FavoriteButton>().Click(favoriteButtonActive);
+    }
+
+    void MakeBookSlots()
+    {
+        if (currentShelf)
+        {
+            foreach(BookObject book in currentShelf.GetBooks())
+            {
+                GameObject temp = Instantiate(blankBookSlot, shelfPanel.transform.position, Quaternion.identity);
+                temp.transform.SetParent(shelfPanel.transform);
+
+                ShelfSlot newSlot = temp.GetComponent<ShelfSlot>();
+
+                if (newSlot)
+                {
+                    newSlot.Create(book, this);
+                }
+
+            }
+        }
+
+    }
+
+
+    public void PressFavoriteButton()
+    {
+        if (currentBook)
+        {
+            bool currentFavoriteStatus = currentBook.FavoriteButtonClicked();
+
+            Shelf favoriteShelf = GameObject.FindGameObjectsWithTag("FavoriteShelf")[0].GetComponent<Shelf>();
+
+            if (currentFavoriteStatus)
+            {
+                favoriteShelf.AddBook(currentBook); 
+            }
+            else
+            {
+                favoriteShelf.RemoveBook(currentBook); 
+            }
+
+            currentBook.Data.isFavorite = !currentBook.Data.isFavorite;
+        }
     }
 
 }

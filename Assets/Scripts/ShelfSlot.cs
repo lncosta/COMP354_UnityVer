@@ -36,4 +36,25 @@ public class ShelfSlot : MonoBehaviour
     {
         
     }
+
+    public void Create(BookObject book, ShelfManager newManager)
+    {
+        thisBook = book;
+        thisShelfManager = newManager;
+
+        if (thisBook)
+        {
+            bookCover.sprite = thisBook.Data.bookCover;
+
+        }
+
+    }
+
+    public void ClickAction()
+    {
+        if (thisBook)
+        {
+            thisShelfManager.BookWasSelected(thisBook.Data.title + "\n" + thisBook.Data.author + "\n"  + thisBook.Data.genre.ToString(),thisBook.Data.isFavorite, thisBook); 
+        }
+    }
 }

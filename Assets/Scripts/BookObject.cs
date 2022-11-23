@@ -13,4 +13,10 @@ public class BookObject : MonoBehaviour {
 
     public void Favorite() { OnFavorite.Invoke(this); }
     public void Unfavorite() { OnUnfavorite.Invoke(this); }
+
+    public bool FavoriteButtonClicked()
+    {
+        return _data.isFavorite;
+    }
+
 }
