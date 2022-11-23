@@ -10,10 +10,12 @@ public class UserObject : MonoBehaviour
     private Dictionary<string, int> authorScores; // The score for each author present in the user premade shelves
     private Dictionary<Genre, int> genreScores; // The score for each genre present in the user premade shelves
 
-    public int getBookScore(BookObject book) // This returns a sum of the scores of the book's author and the book's genre
+    public int GetBookScore(BookObject book) // This returns a sum of the scores of the book's author and the book's genre
     {
-        string author = book.getAuthor(); // Need a method to recover the author of the book
-        Genre genre = book.getGenre(); // Need a method to recover the genre of the book
+        //string author = book.getAuthor(); // Need a method to recover the author of the book
+        //Genre genre = book.getGenre(); // Need a method to recover the genre of the book
+        string author = string.Empty;
+        Genre genre = 0;
 
         int aScore;
         int gScore;
@@ -39,11 +41,11 @@ public class UserObject : MonoBehaviour
 
     public void buildScores()
     {
-        this.authorScores = getAuthorScores();
-        this.genreScores = getGenreScores();
+        this.authorScores = GetAuthorScores();
+        this.genreScores = GetGenreScores();
     }
 
-    private void incrementScore(ref Dictionary<string, int> dico, string key, int increment)
+    private void IncrementScore(ref Dictionary<string, int> dico, string key, int increment)
     {
         if (dico.ContainsKey(key))
         {
@@ -55,7 +57,7 @@ public class UserObject : MonoBehaviour
         }
     }
 
-    private void incrementScore(ref Dictionary<Genre, int> dico, Genre key, int increment)
+    private void IncrementScore(ref Dictionary<Genre, int> dico, Genre key, int increment)
     {
         if (dico.ContainsKey(key))
         {
@@ -67,65 +69,55 @@ public class UserObject : MonoBehaviour
         }
     }
 
-    private void shelfAuthorScore(ref Dictionary<string, int> scores, Shelf shelf, int increment)
-    {
-        BookObject book;
-        string bookAuthor;
-        List<BookObject> booksHeld = shelf.getBooks(); // Need a method to recover the number of books in a shelf
+    private void ShelfAuthorScore(ref Dictionary<string, int> scores, Shelf shelf, int increment) {
+        IEnumerable<BookObject> booksHeld = shelf.GetBooks(); // Need a method to recover the number of books in a shelf
 
-        for (int i = 0; i < booksHeld.Count; i++) 
-        {
-            book = booksHeld[i];
-            bookAuthor = book.getAuthor();
-            incrementScore(ref scores, bookAuthor, increment);
+        foreach (BookObject book in booksHeld) {
+            IncrementScore(ref scores, book.Data.author, increment);
         }
     }
 
-    private void shelfGenreScore(ref Dictionary<Genre, int> scores, Shelf shelf, int increment)
-    {
-        BookObject book;
-        Genre bookGenre;
-        List<BookObject> booksHeld = shelf.getBooks();
+    private void ShelfGenreScore(ref Dictionary<Genre, int> scores, Shelf shelf, int increment) {
+        IEnumerable<BookObject> booksHeld = shelf.GetBooks();
 
-        for (int i = 0; i < booksHeld.Count; i++)
-        {
-            book = booksHeld[i];
-            bookGenre = book.getGenre();
-            incrementScore(ref scores, bookGenre, increment);
+        foreach (BookObject book in booksHeld) {
+            IncrementScore(ref scores, book.Data.genre, increment);
         }
     }
 
-    private Dictionary<string, int> getAuthorScores()
+    private Dictionary<string, int> GetAuthorScores()
     {
         // Need methods to acquire each predefined shelf in a user's data
-        Shelf toRead = Data.getToReadShelf();
-        Shelf reading = Data.getToReadShelf();
-        Shelf read = Data.getToReadShelf();
-        Shelf favorite = Data.getToReadShelf();
+        //Shelf toRead = Data.getToReadShelf();
+        //Shelf reading = Data.getToReadShelf();
+        //Shelf read = Data.getToReadShelf();
+        //Shelf favorite = Data.getToReadShelf();
+        Shelf toRead = null, reading = null, read = null, favorite = null;
 
         Dictionary<string, int> authorScores = new Dictionary<string, int>();
 
-        shelfAuthorScore(ref authorScores, toRead, 1);
-        shelfAuthorScore(ref authorScores, reading, 2);
-        shelfAuthorScore(ref authorScores, read, 2);
-        shelfAuthorScore(ref authorScores, favorite, 1);
+        ShelfAuthorScore(ref authorScores, toRead, 1);
+        ShelfAuthorScore(ref authorScores, reading, 2);
+        ShelfAuthorScore(ref authorScores, read, 2);
+        ShelfAuthorScore(ref authorScores, favorite, 1);
 
         return authorScores;
     }
 
-    private Dictionary<Genre, int> getGenreScores()
+    private Dictionary<Genre, int> GetGenreScores()
     {
-        Shelf toRead = this.getToReadShelf();
-        Shelf reading = this.getToReadShelf();
-        Shelf read = this.getToReadShelf();
-        Shelf favorite = this.getToReadShelf();
+        //Shelf toRead = this.getToReadShelf();
+        //Shelf reading = this.getToReadShelf();
+        //Shelf read = this.getToReadShelf();
+        //Shelf favorite = this.getToReadShelf();
+        Shelf toRead = null, reading = null, read = null, favorite = null;
 
         Dictionary<Genre, int> genreScores = new Dictionary<Genre, int>();
 
-        shelfGenreScore(ref genreScores, toRead, 1);
-        shelfGenreScore(ref genreScores, reading, 2);
-        shelfGenreScore(ref genreScores, read, 2);
-        shelfGenreScore(ref genreScores, favorite, 1);
+        ShelfGenreScore(ref genreScores, toRead, 1);
+        ShelfGenreScore(ref genreScores, reading, 2);
+        ShelfGenreScore(ref genreScores, read, 2);
+        ShelfGenreScore(ref genreScores, favorite, 1);
 
         return genreScores;
     }

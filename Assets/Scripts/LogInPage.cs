@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class LogInPage : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public bool LogInSubmit(string userName, string password) {
+        // Scan through all existing users.
+        // Find first that matches both username and password.
+        // Return if login is successful.
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //AppManager.
+        return false;
     }
 }

@@ -7,7 +7,7 @@ public class BookObject : MonoBehaviour {
     public static event Action<BookObject> OnUnfavorite;
 
     [SerializeField] BookData _data;
-
+    public BookData Data { get; }
 
     public void Favorite() { OnFavorite.Invoke(this); }
     public void Unfavorite() { OnUnfavorite.Invoke(this); }
