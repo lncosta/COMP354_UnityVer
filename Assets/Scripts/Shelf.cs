@@ -33,5 +33,5 @@ public class Shelf : MonoBehaviour {
     // from freely modifying the contents of this shelf.
     public IEnumerable<BookObject> GetBooks() => booksHeld;
     // If getting a list is really necessary, replace GetBooks() by this:
-    public List<BookObject> GetBooksList() => new List<BookObject>(booksHeld);
+    //public List<BookObject> GetBooksList() => new List<BookObject>(booksHeld);
 }

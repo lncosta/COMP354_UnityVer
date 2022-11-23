@@ -49,7 +49,7 @@ public class ShelfManager : MonoBehaviour
             return null;
         }
 
-        List<BookObject> currentBooks = currentShelf.GetBooksList();
+        IEnumerable<BookObject> currentBooks = currentShelf.GetBooks();
         List<BookObject> fiction = new List<BookObject>();
         List<BookObject> romance = new List<BookObject>();
         List<BookObject> horror = new List<BookObject>();
