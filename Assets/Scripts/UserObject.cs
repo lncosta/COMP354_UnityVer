@@ -19,7 +19,7 @@ public class UserObject : MonoBehaviour
 
         int aScore;
         int gScore;
-        if (authorScores.ContainsKey(author))
+        if (authorScores.ContainsKey(author)) // If the author has no score, return it as 0 (otherwise return its score)
         {
             aScore = authorScores[author];
         }
@@ -27,7 +27,7 @@ public class UserObject : MonoBehaviour
         {
             aScore = 0;
         }
-        if (genreScores.ContainsKey(genre))
+        if (genreScores.ContainsKey(genre)) // If the genre has no score, return it as 0 (otherwise return its score)
         {
             gScore = genreScores[genre];
         }
@@ -39,45 +39,47 @@ public class UserObject : MonoBehaviour
         return aScore+gScore;
     }
 
-    public void buildScores()
+    public void buildScores() // Scans the premade shelves to retrieve the score of the contained authors and genres
     {
         this.authorScores = GetAuthorScores();
         this.genreScores = GetGenreScores();
     }
 
-    private void IncrementScore(ref Dictionary<string, int> dico, string key, int increment)
+    private void IncrementScore(ref Dictionary<string, int> dico, string author, int increment) // Increases by "increment" the score of an author/genre if it exists, sets it to increment if it doesn't
     {
-        if (dico.ContainsKey(key))
+        if (dico.ContainsKey(author))
         {
-            dico[key] = dico[key] + increment;
+            dico[author] = dico[author] + increment;
         }
         else
         {
-            dico[key] = increment;
+            dico[author] = increment;
         }
     }
 
-    private void IncrementScore(ref Dictionary<Genre, int> dico, Genre key, int increment)
+    private void IncrementScore(ref Dictionary<Genre, int> dico, Genre genre, int increment)
     {
-        if (dico.ContainsKey(key))
+        if (dico.ContainsKey(genre))
         {
-            dico[key] = dico[key] + increment;
+            dico[genre] = dico[genre] + increment;
         }
         else
         {
-            dico[key] = increment;
+            dico[genre] = increment;
         }
     }
 
-    private void ShelfAuthorScore(ref Dictionary<string, int> scores, Shelf shelf, int increment) {
-        IEnumerable<BookObject> booksHeld = shelf.GetBooks(); // Need a method to recover the number of books in a shelf
+    private void ShelfAuthorScore(ref Dictionary<string, int> scores, Shelf shelf, int increment) // Scans a premade shelf and increase the score of the authors it contains
+    {
+        IEnumerable<BookObject> booksHeld = shelf.GetBooks(); // Need a method to recover the books in a shelf
 
         foreach (BookObject book in booksHeld) {
             IncrementScore(ref scores, book.Data.author, increment);
         }
     }
 
-    private void ShelfGenreScore(ref Dictionary<Genre, int> scores, Shelf shelf, int increment) {
+    private void ShelfGenreScore(ref Dictionary<Genre, int> scores, Shelf shelf, int increment) // Scans a premade shelf and increase the score of the genres it contains
+    { 
         IEnumerable<BookObject> booksHeld = shelf.GetBooks();
 
         foreach (BookObject book in booksHeld) {
@@ -85,7 +87,7 @@ public class UserObject : MonoBehaviour
         }
     }
 
-    private Dictionary<string, int> GetAuthorScores()
+    private Dictionary<string, int> GetAuthorScores() // Get the score for all the authors in a premade shelf
     {
         // Need methods to acquire each predefined shelf in a user's data
         //Shelf toRead = Data.getToReadShelf();
@@ -96,15 +98,15 @@ public class UserObject : MonoBehaviour
 
         Dictionary<string, int> authorScores = new Dictionary<string, int>();
 
-        ShelfAuthorScore(ref authorScores, toRead, 1);
-        ShelfAuthorScore(ref authorScores, reading, 2);
-        ShelfAuthorScore(ref authorScores, read, 2);
-        ShelfAuthorScore(ref authorScores, favorite, 1);
+        ShelfAuthorScore(ref authorScores, toRead, 1); // Having a book in the toRead shelf yields 1 point
+        ShelfAuthorScore(ref authorScores, reading, 2); // Having a book in the reading shelf yields 2 point
+        ShelfAuthorScore(ref authorScores, read, 2); // Having a book in the read shelf yields 2 point
+        ShelfAuthorScore(ref authorScores, favorite, 1); // Having a book in the favorite shelf yields 1 additional point
 
         return authorScores;
     }
 
-    private Dictionary<Genre, int> GetGenreScores()
+    private Dictionary<Genre, int> GetGenreScores() // Get the score for all the genres in a premade shelf
     {
         //Shelf toRead = this.getToReadShelf();
         //Shelf reading = this.getToReadShelf();
