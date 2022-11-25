@@ -10,13 +10,13 @@
 	function Login($username, $password){
 		GLOBAL $con;
 
-		$sql = "SELECT id,username FROM users WHERE username=? AND password=?";
+		$sql = "SELECT username FROM User WHERE username=? AND password=?";
 		$st=$con->prepare($sql);
 
 		$st->execute(array($username, sha1($password)));//encrypt password
 		$all=$st->fetchAll();
 		if (count($all) == 1){
-			echo "SERVER: ID#".$all[0]["id"]." - ".$all[0]["username"];
+			echo "SERVER: ID#".$all[0]["username"];
 			exit();
 		}
 

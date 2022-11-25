@@ -27,7 +27,8 @@ CREATE TABLE `Book` (
   `book_title` varchar(250) DEFAULT NULL,
   `genre` int NOT NULL,
   `author` varchar(100) DEFAULT NULL,
-  `rating` float DEFAULT NULL
+  `rating` float DEFAULT NULL,
+  PRIMARY KEY (`book_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -49,10 +50,11 @@ DROP TABLE IF EXISTS `Shelf`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Shelf` (
-  `shelf_id` int NOT NULL,
+  `shelf_id` int NOT NULL AUTO_INCREMENT,
   `shelf_type` char(50) NOT NULL,
-  `books_id` json DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `books_id` json DEFAULT NULL,
+  PRIMARY KEY (`shelf_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -61,6 +63,7 @@ CREATE TABLE `Shelf` (
 
 LOCK TABLES `Shelf` WRITE;
 /*!40000 ALTER TABLE `Shelf` DISABLE KEYS */;
+INSERT INTO `Shelf` VALUES (1,'read','[1, 2, 4, 5, 8, 9]'),(2,'to_read','[10, 21, 24]'),(3,'reading','[34, 35]'),(4,'favorite','[1, 10, 21, 35]'),(5,'recommendation','[54, 55, 57]'),(6,'reading','[100, 103, 105]'),(7,'to_read','[106, 107, 109]'),(8,'read','[110, 117]'),(9,'favorite','[100, 110, 109]'),(10,'recommendation','[122, 123, 129]');
 /*!40000 ALTER TABLE `Shelf` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -75,12 +78,23 @@ CREATE TABLE `User` (
   `username` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL,
   `email` varchar(250) DEFAULT NULL,
-  `to_read_shelf` int NOT NULL,
+  `to_read_shelf` int DEFAULT NULL,
   `reading_shelf` int DEFAULT NULL,
-  `read_shelf` int NOT NULL,
-  `favorite_shelf` int NOT NULL,
-  `recommendation_shelf` int NOT NULL,
-  `custom_shelves` json DEFAULT NULL
+  `read_shelf` int DEFAULT NULL,
+  `favorite_shelf` int DEFAULT NULL,
+  `recommendation_shelf` int DEFAULT NULL,
+  `custom_shelves` json DEFAULT NULL,
+  PRIMARY KEY (`username`),
+  KEY `User_FK` (`to_read_shelf`),
+  KEY `User_FK_1` (`reading_shelf`),
+  KEY `User_FK_2` (`read_shelf`),
+  KEY `User_FK_3` (`favorite_shelf`),
+  KEY `User_FK_4` (`recommendation_shelf`),
+  CONSTRAINT `User_FK` FOREIGN KEY (`to_read_shelf`) REFERENCES `Shelf` (`shelf_id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `User_FK_1` FOREIGN KEY (`reading_shelf`) REFERENCES `Shelf` (`shelf_id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `User_FK_2` FOREIGN KEY (`read_shelf`) REFERENCES `Shelf` (`shelf_id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `User_FK_3` FOREIGN KEY (`favorite_shelf`) REFERENCES `Shelf` (`shelf_id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `User_FK_4` FOREIGN KEY (`recommendation_shelf`) REFERENCES `Shelf` (`shelf_id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -90,6 +104,7 @@ CREATE TABLE `User` (
 
 LOCK TABLES `User` WRITE;
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
+INSERT INTO `User` VALUES ('johndoe','6c074fa94c98638dfe3e3b74240573eb128b3d16','johndoe@gmail.com',2,3,1,4,5,NULL),('johnsmith','3b842bcd6faab4047ab49f9a99fa0704b9c9d2d7','johnsmith@gmail.com',7,6,8,9,10,NULL);
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -106,4 +121,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-24 18:39:06
+-- Dump completed on 2022-11-25 14:48:01
