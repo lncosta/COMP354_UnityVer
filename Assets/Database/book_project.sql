@@ -29,7 +29,7 @@ CREATE TABLE `Book` (
   `author` varchar(100) DEFAULT NULL,
   `rating` float DEFAULT NULL,
   PRIMARY KEY (`book_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE= utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -54,7 +54,7 @@ CREATE TABLE `Shelf` (
   `shelf_type` char(50) NOT NULL,
   `books_id` json DEFAULT NULL,
   PRIMARY KEY (`shelf_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -84,6 +84,7 @@ CREATE TABLE `User` (
   `favorite_shelf` int DEFAULT NULL,
   `recommendation_shelf` int DEFAULT NULL,
   `custom_shelves` json DEFAULT NULL,
+  `userData` varbinary(200) DEFAULT NULL,
   PRIMARY KEY (`username`),
   KEY `User_FK` (`to_read_shelf`),
   KEY `User_FK_1` (`reading_shelf`),
@@ -95,7 +96,7 @@ CREATE TABLE `User` (
   CONSTRAINT `User_FK_2` FOREIGN KEY (`read_shelf`) REFERENCES `Shelf` (`shelf_id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `User_FK_3` FOREIGN KEY (`favorite_shelf`) REFERENCES `Shelf` (`shelf_id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `User_FK_4` FOREIGN KEY (`recommendation_shelf`) REFERENCES `Shelf` (`shelf_id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -104,7 +105,7 @@ CREATE TABLE `User` (
 
 LOCK TABLES `User` WRITE;
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
-INSERT INTO `User` VALUES ('johndoe','6c074fa94c98638dfe3e3b74240573eb128b3d16','johndoe@gmail.com',2,3,1,4,5,NULL),('johnsmith','3b842bcd6faab4047ab49f9a99fa0704b9c9d2d7','johnsmith@gmail.com',7,6,8,9,10,NULL);
+INSERT INTO `User` VALUES ('johndoe','6c074fa94c98638dfe3e3b74240573eb128b3d16','johndoe@gmail.com',2,3,1,4,5,NULL,NULL),('johnsmith','3b842bcd6faab4047ab49f9a99fa0704b9c9d2d7','johnsmith@gmail.com',7,6,8,9,10,NULL,NULL);
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -121,4 +122,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-25 14:48:01
+-- Dump completed on 2022-12-01 13:59:30
