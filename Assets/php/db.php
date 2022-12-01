@@ -1,7 +1,8 @@
-<?php   
+<?php
+header("Access-Control-Allow-Origin: *");
     $host   = "mysql:dbname=book_project;host=localhost:3306";
 	$user   = "root";
-	$pass   = "bookproject";
+	$pass   = "";
 	$option = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
 	try{
 		$con = new PDO($host,$user, $pass, $option);
