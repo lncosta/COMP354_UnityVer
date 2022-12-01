@@ -18,14 +18,18 @@ public class AppManager : MonoBehaviour
     public static List<BookData> bookMasterList;
 
     private void Awake() {
-        const string BOOK_PATH = "Books";
+        const string BOOK_PATH = "BookData";
         BookData[] loadedBooks = Resources.LoadAll<BookData>(BOOK_PATH);
-        //bookMasterList = new List<BookData>(loadedBooks.Length);
-        bookMasterList = new List<BookData>(loadedBooks);
+        bookMasterList = new List<BookData>(loadedBooks.Length);
 
-        //foreach (var book in loadedBooks) {
-        //    bookMasterList.Add(book);
-        //}
-        Debug.Log("BOOK LIST: " + loadedBooks);
+        foreach (var book in loadedBooks) {
+            bookMasterList.Add(book);
+        }
     }
+
+    [SerializeField] List<BookData> nonGeneuineBookMasterListForThePurposesOfDisplayOnly;
+    private void Start() {
+        nonGeneuineBookMasterListForThePurposesOfDisplayOnly = bookMasterList;
+    }
+
 }

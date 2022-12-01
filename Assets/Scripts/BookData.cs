@@ -29,7 +29,7 @@ public class BookData : ScriptableObject
     // Equivalent of an object constructor.
     public static BookData Create(string id, string name, string author, float rating, Genre genre) {
         BookData newBook = ScriptableObject.CreateInstance<BookData>();
-        AssetDatabase.CreateAsset(newBook, AssetDatabase.GenerateUniqueAssetPath("Assets/ScriptableObjects/BookData.asset"));
+        AssetDatabase.CreateAsset(newBook, AssetDatabase.GenerateUniqueAssetPath("Assets/Resources/BookData/BookData.asset"));
 
         newBook.Init(id, name, author, rating, genre);
         AssetDatabase.SaveAssetIfDirty(newBook);
