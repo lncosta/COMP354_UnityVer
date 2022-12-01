@@ -2,27 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "UserData", menuName = "ScriptableObjects/UserData", order = 2)]
-[System.Serializable]
+[System.Serializable, CreateAssetMenu(fileName ="UserData", menuName ="ScriptableObject/UserData", order =2)]
 public class UserData : ScriptableObject
 {
-    [SerializeField] string _userName;
-    [SerializeField] string _password;
-    [SerializeField] string _email;
-    [SerializeField] string[] _favoriteBooksIds;
-    [SerializeField] List<Shelf> _customShelves;
-    
+    string _userName;
+    string _password;
+    List<string> _favoriteBooks;
+    List<string> _toReadBooks;
+    List<string> _readingBooks;
+    List<string> _readBooks;
+
+    public UserData(string userName, string password, List<string> favoriteBooks, List<string> toReadBooks, List<string> readingBooks, List<string> readBooks) {
+        _userName = userName;
+        _password = password;
+        _favoriteBooks = favoriteBooks;
+        _toReadBooks = toReadBooks;
+        _readingBooks = readingBooks;
+        _readBooks = readBooks;
+    }
 
     // These are C# shortcuts for get methods.
     public string UserName { get => _userName; }
     public string Password { get => _password; }
-    public string Email { get => _email; }
-    public string[] FavoriteBookIds { get => _favoriteBooksIds; }
-    public List<Shelf> CustomShelves { get => new List<Shelf>(CustomShelves); }
-
-
+    public IList<string> FavoriteBooks { get => _favoriteBooks; }
+    public IList<string> ToReadBooks { get => _toReadBooks; }
+    public IList<string> ReadingBooks { get => _readingBooks; }
+    public IList<string> ReadBooks { get => _readBooks; }
+    public List<Shelf> CustomShelves { get => new List<Shelf>(); }
 
     public void SetNewUsername(string newName) { _userName = newName; }
-    public void SetNewPassword(string newPassword) { _password = newPassword; }
-    public void SetNewEmail(string newEmail) { _email = newEmail; }
 }
