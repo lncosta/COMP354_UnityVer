@@ -21,7 +21,7 @@ public class ShelfSlot : MonoBehaviour
     public bool isRecommended = false;
     public bool canBeRecommended = true;
 
-    public BookObject thisBook;
+    public BookData thisBook;
     public ShelfManager thisShelfManager;
 
 
@@ -37,24 +37,17 @@ public class ShelfSlot : MonoBehaviour
         
     }
 
-    public void Create(BookObject book, ShelfManager newManager)
+    public void Create(BookData book, ShelfManager newManager)
     {
         thisBook = book;
         thisShelfManager = newManager;
 
-        if (thisBook)
-        {
-            bookCover.sprite = thisBook.Data.bookCover;
-
-        }
-
+        bookCover.sprite = thisBook?.bookCover;
     }
 
     public void ClickAction()
     {
-        if (thisBook)
-        {
-            thisShelfManager.BookWasSelected(thisBook.Data.title + "\n" + thisBook.Data.author + "\n"  + thisBook.Data.genre.ToString(),thisBook.Data.isFavorite, thisBook); 
-        }
+        if(thisBook == null) { return; }
+        thisShelfManager.BookWasSelected(thisBook.title + "\n" + thisBook.author + "\n" + thisBook.genre.ToString(), thisBook.isFavorite, thisBook);
     }
 }

@@ -13,7 +13,7 @@ public class ShelfManager : MonoBehaviour
     public TextMeshProUGUI bookDescriptionText;
     public GameObject FavoriteButton;
 
-    public BookObject currentBook; 
+    public BookData currentBook; 
 
 
     public GameObject activeShelfContainer;
@@ -29,10 +29,10 @@ public class ShelfManager : MonoBehaviour
         Debug.Log("Shelf was loaded");
         SetDescription("", false);
     }
-    public void setActive(ShelfType type)
+    public void SetActive(ShelfType type)
     {
         currentShelf = null; 
-        foreach (Shelf shelf in AppManager.CurrentUser.Data.CustomShelves)
+        foreach (Shelf shelf in AppManager.shelves)
         { //Set Shelf Visibility for Current User
             if (shelf.type == type)
             {
@@ -48,10 +48,10 @@ public class ShelfManager : MonoBehaviour
     }
 
 
-    public List<List<BookObject>> sortByGenre(ShelfType type)
+    public List<List<BookData>> sortByGenre(ShelfType type)
     {
         Shelf currentShelf = null;
-        foreach(Shelf shelf in AppManager.CurrentUser.Data.CustomShelves)
+        foreach(Shelf shelf in AppManager.shelves)
         {
             if(shelf.type == type)
             {
@@ -63,47 +63,47 @@ public class ShelfManager : MonoBehaviour
             return null;
         }
 
-        IEnumerable<BookObject> currentBooks = currentShelf.GetBooks();
-        List<BookObject> fiction = new List<BookObject>();
-        List<BookObject> romance = new List<BookObject>();
-        List<BookObject> horror = new List<BookObject>();
-        List<BookObject> historical = new List<BookObject>();
-        List<BookObject> action = new List<BookObject>();
-        List<BookObject> thriller = new List<BookObject>();
-        List<BookObject> comedy = new List<BookObject>();
-        List<BookObject> children = new List<BookObject>();
+        IEnumerable<BookData> currentBooks = currentShelf.GetBooks();
+        List<BookData> fiction = new List<BookData>();
+        List<BookData> romance = new List<BookData>();
+        List<BookData> horror = new List<BookData>();
+        List<BookData> historical = new List<BookData>();
+        List<BookData> action = new List<BookData>();
+        List<BookData> thriller = new List<BookData>();
+        List<BookData> comedy = new List<BookData>();
+        List<BookData> children = new List<BookData>();
 
-        foreach(BookObject book in currentBooks)
+        foreach(BookData book in currentBooks)
         {
-            if((book.Data.genre & Genre.FICTION) > 0)
+            if((book.genre & Genre.FICTION) > 0)
             {
                 fiction.Add(book);
             }
-            if ((book.Data.genre & Genre.ROMANCE) > 0)
+            if ((book.genre & Genre.ROMANCE) > 0)
             {
                 romance.Add(book);
             }
-            if ((book.Data.genre & Genre.HORROR) > 0)
+            if ((book.genre & Genre.HORROR) > 0)
             {
                 horror.Add(book);
             }
-            if ((book.Data.genre & Genre.HISTORICAL) > 0)
+            if ((book.genre & Genre.HISTORICAL) > 0)
             {
                 historical.Add(book);
             }
-            if ((book.Data.genre & Genre.ACTION) > 0)
+            if ((book.genre & Genre.ACTION) > 0)
             {
                 action.Add(book);
             }
-            if ((book.Data.genre & Genre.THRILLER) > 0)
+            if ((book.genre & Genre.THRILLER) > 0)
             {
                 thriller.Add(book);
             }
-            if ((book.Data.genre & Genre.COMEDY) > 0)
+            if ((book.genre & Genre.COMEDY) > 0)
             {
                 comedy.Add(book);
             }
-            if ((book.Data.genre & Genre.CHILDREN) > 0)
+            if ((book.genre & Genre.CHILDREN) > 0)
             {
                 children.Add(book);
             }
@@ -111,7 +111,7 @@ public class ShelfManager : MonoBehaviour
 
 
         // Add all book lists together
-        List<List<BookObject>> output = new List<List<BookObject>>(7);
+        List<List<BookData>> output = new List<List<BookData>>(7);
         output.Add(romance);
         output.Add(fiction);
         output.Add(horror);
@@ -124,7 +124,7 @@ public class ShelfManager : MonoBehaviour
     }
 
 
-    public void BookWasSelected(string bookDescription, bool activeButton, BookObject newBook)
+    public void BookWasSelected(string bookDescription, bool activeButton, BookData newBook)
     {
         currentBook = newBook;
         bookDescriptionText.text = bookDescription;
@@ -150,7 +150,7 @@ public class ShelfManager : MonoBehaviour
     {
         if (currentShelf)
         {
-            foreach(BookObject book in currentShelf.GetBooks())
+            foreach(BookData book in currentShelf.GetBooks())
             {
                 GameObject temp = Instantiate(blankBookSlot, shelfPanel.transform.position, Quaternion.identity);
                 temp.transform.SetParent(shelfPanel.transform);
@@ -170,23 +170,21 @@ public class ShelfManager : MonoBehaviour
 
     public void PressFavoriteButton()
     {
-        if (currentBook)
+        if (currentBook == null) { return; }
+
+        bool currentFavoriteStatus = currentBook.FavoriteButtonClicked();
+
+        Shelf favoriteShelf = GameObject.FindGameObjectsWithTag("FavoriteShelf")[0].GetComponent<Shelf>();
+
+        if (currentFavoriteStatus)
         {
-            bool currentFavoriteStatus = currentBook.FavoriteButtonClicked();
-
-            Shelf favoriteShelf = GameObject.FindGameObjectsWithTag("FavoriteShelf")[0].GetComponent<Shelf>();
-
-            if (currentFavoriteStatus)
-            {
-                favoriteShelf.AddBook(currentBook); 
-            }
-            else
-            {
-                favoriteShelf.RemoveBook(currentBook); 
-            }
-
-            currentBook.Data.isFavorite = !currentBook.Data.isFavorite;
+            favoriteShelf.AddBook(currentBook); 
         }
-    }
+        else
+        {
+            favoriteShelf.RemoveBook(currentBook); 
+        }
 
+        currentBook.isFavorite = !currentBook.isFavorite;
+    }
 }

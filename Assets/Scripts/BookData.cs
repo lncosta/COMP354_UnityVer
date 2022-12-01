@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -45,5 +46,18 @@ public class BookData : ScriptableObject
         this.author = author;
         this.rating = rating;
         this.genre = genre;
+    }
+
+
+    // Raise this event when this book gets favorited so that shelves can react accordingly.
+    public static event Action<BookData> OnFavorite;
+    public static event Action<BookData> OnUnfavorite;
+
+
+    public void Favorite() { OnFavorite.Invoke(this); }
+    public void Unfavorite() { OnUnfavorite.Invoke(this); }
+
+    public bool FavoriteButtonClicked() {
+        return this.isFavorite;
     }
 }
