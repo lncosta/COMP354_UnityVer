@@ -31,7 +31,7 @@ public class LogOut : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("username", AppManager.CurrentUser.Data.UserName);
         form.AddField("password", AppManager.CurrentUser.Data.Password);
-        form.AddField("userData", json);
+        form.AddField("data", json);
 
         UserObject token = new UserObject();
 
@@ -59,8 +59,9 @@ public class LogOut : MonoBehaviour
                 {
                     //open welcom panel
                     logIn.SetActive(true);
+                    Debug.Log("<color=green>" + w.text + "User Data Saved" + "</color>");//user exist
                     app.SetActive(false);
-                    Debug.Log("<color=green>" + w.text + "User Data Saved"+ "</color>");//user exist
+                    
                     
 
 
