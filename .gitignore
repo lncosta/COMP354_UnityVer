@@ -567,3 +567,6 @@ Assets/ScriptableObjects/BookData 423.asset.meta
 Assets/ScriptableObjects/BookData 424.asset
 Assets/ScriptableObjects/BookData 424.asset.meta
 *.dwlt
+*.blob
+*.dwlt
+*.dwlt

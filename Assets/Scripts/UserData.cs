@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "UserData", menuName = "ScriptableObjects/UserData", order = 2)]
+[System.Serializable]
 public class UserData : ScriptableObject
 {
     [SerializeField] string _userName;

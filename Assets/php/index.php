@@ -5,6 +5,18 @@
 	function getUserData($username, $password){
 		GLOBAL $con;
 
+		$userSQL = "SELECT username, password, email FROM User WHERE username=? AND password=?";
+		$st = $con->prepare($userSQL);
+		$st->execute(array($username, sha1($password)));
+		$all = $st->fetchAll();
+
+		$jsonstring = [
+			"username" => $all[0]["username"],
+			"password" => $all[0]["password"],
+			"email" => $all[0]["email"],
+			
+		];
+
 		$sql = "SELECT shelf_type, books_id FROM Shelf JOIN User ON User.to_read_shelf = Shelf.shelf_id WHERE username=? AND password=? 
 		UNION SELECT shelf_type, books_id FROM Shelf JOIN User ON User.reading_shelf = Shelf.shelf_id WHERE username=? AND password=? 
 		UNION SELECT shelf_type, books_id FROM Shelf JOIN User ON User.read_shelf = Shelf.shelf_id WHERE username=? AND password=?
