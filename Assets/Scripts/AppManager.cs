@@ -5,7 +5,7 @@ using UnityEngine;
 public class AppManager : MonoBehaviour
 {
     static UserObject _currentUser;
-    public static UserObject CurrentUser { get => _currentUser; }
+    public static UserObject CurrentUser { get => _currentUser; set { _currentUser = value; } }
 
 
 

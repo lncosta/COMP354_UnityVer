@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UserObject : MonoBehaviour
+
+[System.Serializable]
+public class UserObject
 {
     [SerializeField] UserData _data;
-    public UserData Data { get => _data; }
+    public UserData Data { get => _data; set { _data = value; } }
 }

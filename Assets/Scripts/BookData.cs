@@ -5,6 +5,8 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "BookData", menuName = "ScriptableObjects/BookData", order = 1)]
+[System.Serializable]
+[SerializeField]
 public class BookData : ScriptableObject
 {
     public string id;

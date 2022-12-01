@@ -42,7 +42,7 @@ public class ShelfSlot : MonoBehaviour
         thisBook = book;
         thisShelfManager = newManager;
 
-        if (thisBook)
+        if (thisBook != null)
         {
             bookCover.sprite = thisBook.Data.bookCover;
 
@@ -52,7 +52,7 @@ public class ShelfSlot : MonoBehaviour
 
     public void ClickAction()
     {
-        if (thisBook)
+        if (thisBook != null)
         {
             thisShelfManager.BookWasSelected(thisBook.Data.title + "\n" + thisBook.Data.author + "\n"  + thisBook.Data.genre.ToString(),thisBook.Data.isFavorite, thisBook); 
         }

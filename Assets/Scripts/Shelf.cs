@@ -16,13 +16,13 @@ public enum ShelfType { TOREAD, READ, FAVORITES, RECOMMENDATION, READING, DONOTR
 };
 
 [System.Serializable]
-public class Shelf : MonoBehaviour {
+public class Shelf {
 
     public ShelfType type;
     public string shelfName;
     protected List<BookObject> booksHeld = new List<BookObject>();
 
-    public GameObject shelfContainerInUI;
+    //public GameObject shelfContainerInUI;
 
     // Update is called once per frame
     void Update() {
@@ -31,7 +31,7 @@ public class Shelf : MonoBehaviour {
 
     public void AddBook(BookObject book) {
 
-        if (book)
+        if (book != null)
         {
             booksHeld.Add(book);
         }
@@ -40,7 +40,7 @@ public class Shelf : MonoBehaviour {
 
     public void RemoveBook(BookObject book)
     {
-        if (book)
+        if (book != null)
         {
             booksHeld.Remove(book);
         }

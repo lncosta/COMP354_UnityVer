@@ -19,6 +19,8 @@ public class ShelfManager : MonoBehaviour
     public GameObject activeShelfContainer;
     public Shelf currentShelf;
 
+    public GameObject[] shelfContainerInUI; 
+
 
 
 
@@ -36,13 +38,13 @@ public class ShelfManager : MonoBehaviour
         { //Set Shelf Visibility for Current User
             if (shelf.type == type)
             {
-                shelf.shelfContainerInUI.SetActive(true);
-                activeShelfContainer = shelf.shelfContainerInUI;
-                currentShelf = shelf;
+               //shelfContainerInUI[shelf.type.GetType().].SetActive(true);
+                //activeShelfContainer = shelf.shelfContainerInUI;
+                //currentShelf = shelf;
             }
             else
             {
-                shelf.shelfContainerInUI.SetActive(false);
+                //shelf.shelfContainerInUI.SetActive(false);
             }
         }
     }
@@ -148,7 +150,7 @@ public class ShelfManager : MonoBehaviour
 
     void MakeBookSlots()
     {
-        if (currentShelf)
+        if (currentShelf != null)
         {
             foreach(BookObject book in currentShelf.GetBooks())
             {
@@ -170,7 +172,7 @@ public class ShelfManager : MonoBehaviour
 
     public void PressFavoriteButton()
     {
-        if (currentBook)
+        if (currentBook != null)
         {
             bool currentFavoriteStatus = currentBook.FavoriteButtonClicked();
 
