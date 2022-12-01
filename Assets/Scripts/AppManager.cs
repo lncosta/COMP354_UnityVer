@@ -13,4 +13,6 @@ public class AppManager : MonoBehaviour
     public GameObject mainAppCanvas;
 
     public int currentPage;
+
+    public static List<BookObject> bookMasterList; 
 }

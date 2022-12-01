@@ -29,7 +29,7 @@ CREATE TABLE `Book` (
   `author` varchar(100) DEFAULT NULL,
   `rating` float DEFAULT NULL,
   PRIMARY KEY (`book_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE= utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -54,7 +54,7 @@ CREATE TABLE `Shelf` (
   `shelf_type` char(50) NOT NULL,
   `books_id` json DEFAULT NULL,
   PRIMARY KEY (`shelf_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,7 +95,7 @@ CREATE TABLE `User` (
   CONSTRAINT `User_FK_2` FOREIGN KEY (`read_shelf`) REFERENCES `Shelf` (`shelf_id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `User_FK_3` FOREIGN KEY (`favorite_shelf`) REFERENCES `Shelf` (`shelf_id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `User_FK_4` FOREIGN KEY (`recommendation_shelf`) REFERENCES `Shelf` (`shelf_id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
