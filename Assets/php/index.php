@@ -46,20 +46,33 @@
 		$st->execute(array($username, sha1($password)));//encrypt password
 		$all=$st->fetchAll();
 		if (count($all) == 1){
-			echo "SERVER: ID#".$all[0]["username"];
-			exit();
+			if($all[0]["username"] == "" && $password == ""){
+				echo "SERVER: error - empty fields!";
+			}
+			else{
+				echo "SERVER: ID#".$all[0]["username"];
+				//getUserData($username,  $password);
+			}
+			
+			//exit();
+		}
+		else{
+			//if username or password are empty strings
+			echo "SERVER: error - empty fields!";
+			//exit();
 		}
 
-		//if username or password are empty strings
-		echo "SERVER: Login successful!";
-		exit();
+		
 	}
 
 
 	if (isset($_POST["username"]) && !empty($_POST["username"]) && 
 		isset($_POST["password"]) && !empty($_POST["password"])){
 
-		getUserData($_POST["username"], $_POST["password"]);
+		Login($_POST["username"], $_POST["password"]);
+	}
+	else{
+		echo "SERVER: error - empty fields!";
 	}
 
 	// getUserData("johndoe", "johndoe");
