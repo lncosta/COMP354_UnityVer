@@ -23,6 +23,6 @@ public class ShelfButton : MonoBehaviour
 
     public void OnClickAction()
     {
-       shelfManager.setActive(thisShelfType);
+       shelfManager.setActive((int)thisShelfType);
     }
 }

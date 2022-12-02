@@ -3243,6 +3243,7 @@ GameObject:
   - component: {fileID: 527240930}
   - component: {fileID: 527240929}
   - component: {fileID: 527240928}
+  - component: {fileID: 527240931}
   m_Layer: 5
   m_Name: ButtonToRead
   m_TagString: Untagged
@@ -3353,6 +3354,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527240926}
   m_CullTransparentMesh: 1
+--- !u!114 &527240931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527240926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c46ad2800b38b814086816cadbd678dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisShelfType: 0
+  shelfManager: {fileID: 136749116}
 --- !u!1 &533344807
 GameObject:
   m_ObjectHideFlags: 0
@@ -3828,6 +3843,7 @@ GameObject:
   - component: {fileID: 597521695}
   - component: {fileID: 597521694}
   - component: {fileID: 597521693}
+  - component: {fileID: 597521696}
   m_Layer: 5
   m_Name: ButtonRead
   m_TagString: Untagged
@@ -3899,7 +3915,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 597521694}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 597521696}
+        m_TargetAssemblyTypeName: ShelfButton, Assembly-CSharp
+        m_MethodName: OnClickAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &597521694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3938,6 +3966,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 597521691}
   m_CullTransparentMesh: 1
+--- !u!114 &597521696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597521691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c46ad2800b38b814086816cadbd678dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisShelfType: 1
+  shelfManager: {fileID: 136749116}
 --- !u!1 &602719021
 GameObject:
   m_ObjectHideFlags: 0
@@ -4938,6 +4980,7 @@ MonoBehaviour:
   addButtonPanel: {fileID: 2002347429}
   bookDrop: {fileID: 709967949}
   shelfDrop: {fileID: 1575756570}
+  bookDataSample: {fileID: 11400000, guid: 3376e761b57ae1a43828eaa053f700ca, type: 2}
 --- !u!1 &709835603
 GameObject:
   m_ObjectHideFlags: 0
@@ -7324,6 +7367,7 @@ GameObject:
   - component: {fileID: 1058364190}
   - component: {fileID: 1058364189}
   - component: {fileID: 1058364188}
+  - component: {fileID: 1058364191}
   m_Layer: 5
   m_Name: ButtonRecommendation
   m_TagString: Untagged
@@ -7395,7 +7439,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1058364189}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1058364191}
+        m_TargetAssemblyTypeName: ShelfButton, Assembly-CSharp
+        m_MethodName: OnClickAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1058364189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7434,6 +7490,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1058364186}
   m_CullTransparentMesh: 1
+--- !u!114 &1058364191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058364186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c46ad2800b38b814086816cadbd678dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisShelfType: 3
+  shelfManager: {fileID: 136749116}
 --- !u!1 &1076558815
 GameObject:
   m_ObjectHideFlags: 0
@@ -10273,6 +10343,7 @@ GameObject:
   - component: {fileID: 1533864377}
   - component: {fileID: 1533864376}
   - component: {fileID: 1533864375}
+  - component: {fileID: 1533864378}
   m_Layer: 5
   m_Name: ButtonReading
   m_TagString: Untagged
@@ -10344,7 +10415,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1533864376}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1533864378}
+        m_TargetAssemblyTypeName: ShelfButton, Assembly-CSharp
+        m_MethodName: OnClickAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1533864376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10383,6 +10466,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1533864373}
   m_CullTransparentMesh: 1
+--- !u!114 &1533864378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533864373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c46ad2800b38b814086816cadbd678dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisShelfType: 4
+  shelfManager: {fileID: 136749116}
 --- !u!1 &1551452667
 GameObject:
   m_ObjectHideFlags: 0
@@ -12180,6 +12277,7 @@ GameObject:
   - component: {fileID: 1903651955}
   - component: {fileID: 1903651954}
   - component: {fileID: 1903651953}
+  - component: {fileID: 1903651956}
   m_Layer: 5
   m_Name: ButtonFavorites
   m_TagString: Untagged
@@ -12251,7 +12349,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1903651954}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1903651956}
+        m_TargetAssemblyTypeName: ShelfButton, Assembly-CSharp
+        m_MethodName: OnClickAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1903651954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12290,6 +12400,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1903651951}
   m_CullTransparentMesh: 1
+--- !u!114 &1903651956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1903651951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c46ad2800b38b814086816cadbd678dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisShelfType: 2
+  shelfManager: {fileID: 136749116}
 --- !u!1 &1927979997
 GameObject:
   m_ObjectHideFlags: 0

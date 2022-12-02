@@ -31,21 +31,20 @@ public class ShelfManager : MonoBehaviour
         Debug.Log("Shelf was loaded");
         SetDescription("", false);
     }
-    public void setActive(ShelfType type)
+    public void setActive(int type)
     {
-        currentShelf = null; 
+        currentShelf = null;
         foreach (Shelf shelf in AppManager.CurrentUser.Data.CustomShelves)
         { //Set Shelf Visibility for Current User
-            if (shelf.type == type)
+           
+            if ((int)shelf.type == type)
             {
-               //shelfContainerInUI[shelf.type.GetType().].SetActive(true);
-                //activeShelfContainer = shelf.shelfContainerInUI;
-                //currentShelf = shelf;
+                currentShelf = shelf;
+                ClearBookSlots();
+                MakeBookSlots();
             }
-            else
-            {
-                //shelf.shelfContainerInUI.SetActive(false);
-            }
+
+
         }
     }
 

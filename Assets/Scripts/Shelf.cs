@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ShelfType { TOREAD, READ, FAVORITES, RECOMMENDATION, READING, DONOTREC};
+public enum ShelfType { TOREAD = 0, READ =1, FAVORITES =2, RECOMMENDATION =3, READING=4, DONOTREC =5};
 [Flags] public enum Genre { 
     FICTION = (1 << 0),
     ROMANCE = (1 << 1),

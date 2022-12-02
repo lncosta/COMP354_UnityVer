@@ -10,7 +10,9 @@ public class AddBook : MonoBehaviour
     public GameObject addButtonPanel;
 
     public TMP_Dropdown bookDrop;
-    public TMP_Dropdown shelfDrop; 
+    public TMP_Dropdown shelfDrop;
+    
+    public BookData bookDataSample;
 
 
     // Start is called before the first frame update
@@ -28,7 +30,16 @@ public class AddBook : MonoBehaviour
     public void ButtonClick()
     {
         visible = !visible;
+
         addButtonPanel.SetActive(visible);
+
+        BookObject sample = new BookObject();
+        sample.Data = bookDataSample;
+
+        foreach(Shelf s in AppManager.CurrentUser.Data.CustomShelves)
+        {
+            s.AddBook(sample);
+        }
 
     }
 

@@ -10,7 +10,7 @@ public class BookObject{
 
     [SerializeField] BookData _data;
 
-    public BookData Data { get => _data; }
+    public BookData Data { get => _data; set { _data = value; } }
 
 
     public void Favorite() { OnFavorite.Invoke(this); }

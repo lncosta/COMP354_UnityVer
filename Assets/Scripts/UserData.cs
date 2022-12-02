@@ -19,7 +19,7 @@ public class UserData
     public string Password { get => _password; }
     public string Email { get => _email; }
     public string[] FavoriteBookIds { get => _favoriteBooksIds; }
-    public List<Shelf> CustomShelves { get => new List<Shelf>(CustomShelves); set { _customShelves = new List<Shelf>() ; } }
+    public List<Shelf> CustomShelves { get => _customShelves; set { _customShelves = new List<Shelf>() ; } }
 
 
 
