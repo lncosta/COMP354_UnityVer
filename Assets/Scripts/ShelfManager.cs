@@ -19,7 +19,10 @@ public class ShelfManager : MonoBehaviour
     public GameObject activeShelfContainer;
     public Shelf currentShelf;
 
-    public GameObject[] shelfContainerInUI; 
+    public GameObject[] shelfContainerInUI;
+
+
+    public TextMeshProUGUI shelfName;
 
 
 
@@ -30,6 +33,8 @@ public class ShelfManager : MonoBehaviour
         MakeBookSlots();
         Debug.Log("Shelf was loaded");
         SetDescription("", false);
+
+        
     }
     public void setActive(int type)
     {
@@ -40,6 +45,7 @@ public class ShelfManager : MonoBehaviour
             if ((int)shelf.type == type)
             {
                 currentShelf = shelf;
+                shelfName.text = shelf.type.ToString(); 
                 ClearBookSlots();
                 MakeBookSlots();
             }

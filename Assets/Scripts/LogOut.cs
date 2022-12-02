@@ -36,7 +36,7 @@ public class LogOut : MonoBehaviour
         UserObject token = new UserObject();
 
         JsonUtility.FromJsonOverwrite(json, token);
-        Debug.Log("Data from token: " + token.Data.UserName);
+        Debug.Log("Data from token: " + token.Data.CustomShelves.ToString());
 
         WWW w = new WWW(url, form);
         yield return w;

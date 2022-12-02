@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bookName: {fileID: 0}
-  bookCover: {fileID: 0}
+  bookCover: {fileID: 7282354004260197294}
   bookSprite: {fileID: 0}
   bookGenre: 0
   bookSummary: 
@@ -100,8 +100,18 @@ MonoBehaviour:
   isFavorite: 0
   isRecommended: 0
   canBeRecommended: 1
-  thisBook: {fileID: 0}
+  thisBook:
+    _data: {fileID: 0}
   thisShelfManager: {fileID: 0}
+  bookCoversPerGenre:
+  - {fileID: 21300000, guid: c6b3ef3a98f023040a411cf641638921, type: 3}
+  - {fileID: 21300000, guid: eceb16dc113936542a532e80d1962560, type: 3}
+  - {fileID: 21300000, guid: 996f3b9674cdb23469baefb4679f955e, type: 3}
+  - {fileID: 21300000, guid: 75979607928539d4b8ae6daff236d5ab, type: 3}
+  - {fileID: 21300000, guid: d77eeb93b0e8f254ea7d30ac9f9d7717, type: 3}
+  - {fileID: 21300000, guid: 0bd616407293fca42953ce2c3aa40e66, type: 3}
+  - {fileID: 21300000, guid: ad3fb55c1a5c08b4489e0f4b16304862, type: 3}
+  - {fileID: 21300000, guid: ce60a303ddd92f641afdf118c2f09137, type: 3}
 --- !u!1 &9137280145568256677
 GameObject:
   m_ObjectHideFlags: 0

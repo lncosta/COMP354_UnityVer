@@ -20,7 +20,9 @@ public class Shelf {
 
     public ShelfType type;
     public string shelfName;
-    protected List<BookObject> booksHeld = new List<BookObject>();
+    [SerializeField] protected List<BookObject> booksHeld = new List<BookObject>();
+
+    [SerializeField] public List<string> ids; 
 
     //public GameObject shelfContainerInUI;
 
@@ -34,6 +36,7 @@ public class Shelf {
         if (book != null)
         {
             booksHeld.Add(book);
+            ids.Add(book.Data.id);
         }
     
     }
@@ -43,6 +46,7 @@ public class Shelf {
         if (book != null)
         {
             booksHeld.Remove(book);
+            ids.Remove(book.Data.id);
         }
         
     }

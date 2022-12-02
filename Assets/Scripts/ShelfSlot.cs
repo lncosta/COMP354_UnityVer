@@ -24,6 +24,8 @@ public class ShelfSlot : MonoBehaviour
     public BookObject thisBook;
     public ShelfManager thisShelfManager;
 
+    public List<Sprite> bookCoversPerGenre; 
+
 
 
     void Start()
@@ -44,10 +46,25 @@ public class ShelfSlot : MonoBehaviour
 
         if (thisBook != null)
         {
-            bookCover.sprite = thisBook.Data.bookCover;
+            if (thisBook.Data.bookCover != null) {
+                //bookCover.sprite = thisBook.Data.bookCover;
+                AddCoverOfType(thisBook);
+            }
+            else
+            {
+                AddCoverOfType(thisBook); 
+            }
+           
 
         }
 
+    }
+
+    public void AddCoverOfType(BookObject book)
+    {
+        Debug.Log((int)book.Data.genre);
+        book.Data.bookCover = bookCoversPerGenre[(int)book.Data.genre];
+        bookCover.sprite = bookCoversPerGenre[(int)book.Data.genre]; 
     }
 
     public void ClickAction()
