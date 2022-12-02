@@ -14,5 +14,34 @@ public class AppManager : MonoBehaviour
 
     public int currentPage;
 
-    public static List<BookObject> bookMasterList; 
+    public static List<BookObject> bookMasterList;
+
+    
+    private void Awake()
+    {
+       
+    }
+
+    public static void LoadBooks() {
+        const string BOOK_PATH = "BookData";
+
+        //Debug.Log(Application.dataPath + BOOK_PATH);
+        BookData[] loadedBooks = Resources.LoadAll<BookData>(BOOK_PATH);
+        bookMasterList = new List<BookObject>();
+
+        foreach (var book in loadedBooks)
+        {
+            BookObject toAdd = new BookObject();
+            toAdd.Data = book;
+            bookMasterList.Add(toAdd);
+        }
+
+        Debug.Log("Books loaded:"  + bookMasterList.Count);
+
+    }
+    /*[SerializeField] List<BookData> nonGeneuineBookMasterListForThePurposesOfDisplayOnly;
+    private void Start()
+    {
+        nonGeneuineBookMasterListForThePurposesOfDisplayOnly = bookMasterList;
+    }*/
 }

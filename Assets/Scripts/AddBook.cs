@@ -14,11 +14,16 @@ public class AddBook : MonoBehaviour
     
     public BookData bookDataSample;
 
+    private string shelfName;
+
+
+    public TextMeshProUGUI shelfNameUI;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        //populateDrops(); //Needs static values to be set, else throws exception
+        
     }
 
     // Update is called once per frame
@@ -33,13 +38,26 @@ public class AddBook : MonoBehaviour
 
         addButtonPanel.SetActive(visible);
 
-        BookObject sample = new BookObject();
+        if (visible)
+        {
+            shelfName = shelfNameUI.text;
+            shelfNameUI.text = "Pick a book and shelf:";
+        }
+        else
+        {
+            shelfNameUI.text = shelfName; //Reset name of shelf; 
+        }
+
+
+        populateDrops();
+
+        /*BookObject sample = new BookObject();
         sample.Data = bookDataSample;
 
         foreach(Shelf s in AppManager.CurrentUser.Data.CustomShelves)
         {
             s.AddBook(sample);
-        }
+        }*/
 
     }
 
@@ -50,7 +68,13 @@ public class AddBook : MonoBehaviour
         foreach (BookObject b in AppManager.bookMasterList)
         {
             TMP_Dropdown.OptionData data = new TMP_Dropdown.OptionData();
-            data.text = b.Data.title;
+            string titleAbriged = b.Data.id + " - " + b.Data.title;
+            if (b.Data.title.Length > 46)
+            {
+                titleAbriged = b.Data.id + " - " + b.Data.title.Substring(0, 45) + "...";
+            }
+           
+            data.text = titleAbriged;
             bookDrop.options.Add(data);
         }
 

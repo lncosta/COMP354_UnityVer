@@ -34,6 +34,8 @@ public class ShelfManager : MonoBehaviour
         Debug.Log("Shelf was loaded");
         SetDescription("", false);
 
+        AppManager.LoadBooks();
+
         
     }
     public void setActive(int type)

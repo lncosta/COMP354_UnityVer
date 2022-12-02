@@ -28,9 +28,10 @@ public class BookData : ScriptableObject
 
 #if UNITY_EDITOR
     // Equivalent of an object constructor.
-    public static BookData Create(string id, string name, string author, float rating, Genre genre) {
+    public static BookData Create(string id, string name, string author, float rating, Genre genre)
+    {
         BookData newBook = ScriptableObject.CreateInstance<BookData>();
-        AssetDatabase.CreateAsset(newBook, AssetDatabase.GenerateUniqueAssetPath("Assets/ScriptableObjects/BookData.asset"));
+        AssetDatabase.CreateAsset(newBook, AssetDatabase.GenerateUniqueAssetPath("Assets/Resources/BookData/BookData.asset"));
 
         newBook.Init(id, name, author, rating, genre);
         AssetDatabase.SaveAssetIfDirty(newBook);
@@ -41,11 +42,15 @@ public class BookData : ScriptableObject
 
 
     // Value assignment part of constructor.
-    void Init(string id, string title, string author, float rating, Genre genre) {
+    void Init(string id, string title, string author, float rating, Genre genre)
+    {
         this.id = id;
         this.title = title;
         this.author = author;
         this.rating = rating;
         this.genre = genre;
     }
+
+
+    
 }
