@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 public class Recommendation
 {
+	Random rnd = new Random();
 	private UserObject user;
 	public Recommendation(AppManager appManager)
 	{
@@ -19,6 +20,6 @@ public class Recommendation
 
 	private int bookComparer(BookObject b1, BookObject b2) // Compares the score of two books
     {
-		return (user.GetBookScore(b1) - user.GetBookScore(b2));
+		return (user.GetBookScore(b1) - user.GetBookScore(b2)+rnd.Next(-2, 2)); // Add an element of randomness in the sorting
     }
 }

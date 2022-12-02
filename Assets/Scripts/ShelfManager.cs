@@ -31,7 +31,7 @@ public class ShelfManager : MonoBehaviour
     }
     public void setActive(ShelfType type)
     {
-        currentShelf = null; 
+        currentShelf = null;
         foreach (Shelf shelf in AppManager.CurrentUser.Data.CustomShelves)
         { //Set Shelf Visibility for Current User
             if (shelf.type == type)

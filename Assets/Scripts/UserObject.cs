@@ -20,6 +20,18 @@ public class UserObject : MonoBehaviour
 
         int aScore;
         int gScore;
+
+        // Need methods to acquire each predefined shelf in a user's data
+        //Shelf toRead = Data.getToReadShelf();
+        //Shelf reading = Data.getToReadShelf();
+        //Shelf read = Data.getToReadShelf();
+        //Shelf favorite = Data.getToReadShelf();
+        Shelf toRead = null, reading = null, read = null, favorite = null;
+
+        if (toRead.GetBooks().Contains(book) || reading.GetBooks().Contains(book) || read.GetBooks().Contains(book) || favorite.GetBooks().Contains(book)) // Verify if the book is already in a shelf
+        {
+            return 0;
+        }
         if (authorScores.ContainsKey(author)) // If the author has no score, return it as 0 (otherwise return its score)
         {
             aScore = authorScores[author];
@@ -100,9 +112,9 @@ public class UserObject : MonoBehaviour
         Dictionary<string, int> authorScores = new Dictionary<string, int>();
 
         ShelfAuthorScore(ref authorScores, toRead, 1); // Having a book in the toRead shelf yields 1 point
-        ShelfAuthorScore(ref authorScores, reading, 2); // Having a book in the reading shelf yields 2 point
-        ShelfAuthorScore(ref authorScores, read, 2); // Having a book in the read shelf yields 2 point
-        ShelfAuthorScore(ref authorScores, favorite, 1); // Having a book in the favorite shelf yields 1 additional point
+        ShelfAuthorScore(ref authorScores, reading, 1); // Having a book in the reading shelf yields 2 point
+        ShelfAuthorScore(ref authorScores, read, 1); // Having a book in the read shelf yields 2 point
+        ShelfAuthorScore(ref authorScores, favorite, 3); // Having a book in the favorite shelf yields 1 additional point
 
         return authorScores;
     }
@@ -118,9 +130,9 @@ public class UserObject : MonoBehaviour
         Dictionary<Genre, int> genreScores = new Dictionary<Genre, int>();
 
         ShelfGenreScore(ref genreScores, toRead, 1);
-        ShelfGenreScore(ref genreScores, reading, 2);
-        ShelfGenreScore(ref genreScores, read, 2);
-        ShelfGenreScore(ref genreScores, favorite, 1);
+        ShelfGenreScore(ref genreScores, reading, 1);
+        ShelfGenreScore(ref genreScores, read, 1);
+        ShelfGenreScore(ref genreScores, favorite, 3);
 
         return genreScores;
     }
