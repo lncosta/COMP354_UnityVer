@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -28,7 +29,7 @@ public class BookData : ScriptableObject
     // Equivalent of an object constructor.
     public static BookData Create(string id, string name, string author, float rating, Genre genre) {
         BookData newBook = ScriptableObject.CreateInstance<BookData>();
-        AssetDatabase.CreateAsset(newBook, AssetDatabase.GenerateUniqueAssetPath("Assets/ScriptableObjects/BookData.asset"));
+        AssetDatabase.CreateAsset(newBook, AssetDatabase.GenerateUniqueAssetPath("Assets/Resources/BookData/BookData.asset"));
 
         newBook.Init(id, name, author, rating, genre);
         AssetDatabase.SaveAssetIfDirty(newBook);
@@ -45,5 +46,18 @@ public class BookData : ScriptableObject
         this.author = author;
         this.rating = rating;
         this.genre = genre;
+    }
+
+
+    // Raise this event when this book gets favorited so that shelves can react accordingly.
+    public static event Action<BookData> OnFavorite;
+    public static event Action<BookData> OnUnfavorite;
+
+
+    public void Favorite() { OnFavorite.Invoke(this); }
+    public void Unfavorite() { OnUnfavorite.Invoke(this); }
+
+    public bool FavoriteButtonClicked() {
+        return this.isFavorite;
     }
 }

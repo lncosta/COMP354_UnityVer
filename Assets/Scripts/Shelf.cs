@@ -20,7 +20,7 @@ public class Shelf : MonoBehaviour {
 
     public ShelfType type;
     public string shelfName;
-    protected List<BookObject> booksHeld = new List<BookObject>();
+    protected List<BookData> booksHeld = new List<BookData>();
 
     public GameObject shelfContainerInUI;
 
@@ -29,27 +29,22 @@ public class Shelf : MonoBehaviour {
         //Perform updates based on shelf type
     }
 
-    public void AddBook(BookObject book) {
-
-        if (book)
-        {
-            booksHeld.Add(book);
-        }
-    
+    public virtual void AddBook(BookData book) {
+        if (book == null) return;
+        booksHeld.AddUnique(book);
     }
 
-    public void RemoveBook(BookObject book)
+    public virtual void RemoveBook(BookData book)
     {
-        if (book)
-        {
-            booksHeld.Remove(book);
+        if (book == null) return;
+        if(booksHeld.Remove(book)) {
+            Debug.Log($"Trying to remove book: {book} which is not in the shelf.");
         }
-        
     }
 
     // Casting down to IEnumerable prevents other classes 
     // from freely modifying the contents of this shelf.
-    public IEnumerable<BookObject> GetBooks() => booksHeld;
+    public IEnumerable<BookData> GetBooks() => booksHeld;
     // If getting a list is really necessary, replace GetBooks() by this:
     //public List<BookObject> GetBooksList() => new List<BookObject>(booksHeld);
 }

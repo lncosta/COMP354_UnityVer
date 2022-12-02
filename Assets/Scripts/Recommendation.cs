@@ -9,7 +9,7 @@ public class Recommendation
 		//user = appManager.getCurrentUser; // Need a way to recover the current user of the app
 	}
 
-	public List<BookObject> getRecommendations(List<BookObject> booksDatabase) // Will return the first 10 books after sorting the whole database
+	public List<BookData> getRecommendations(List<BookData> booksDatabase) // Will return the first 10 books after sorting the whole database
     {
 		user.buildScores();
 		booksDatabase.Sort(bookComparer);
@@ -18,7 +18,7 @@ public class Recommendation
 
 	}
 
-	private int bookComparer(BookObject b1, BookObject b2) // Compares the score of two books
+	private int bookComparer(BookData b1, BookData b2) // Compares the score of two books
     {
 		return (user.GetBookScore(b1) - user.GetBookScore(b2)+rnd.Next(-2, 2)); // Add an element of randomness in the sorting
     }

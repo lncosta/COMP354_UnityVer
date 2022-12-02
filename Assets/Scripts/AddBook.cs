@@ -36,10 +36,10 @@ public class AddBook : MonoBehaviour
     {
         bookDrop.options.Clear();
 
-        foreach (BookObject b in AppManager.bookMasterList)
+        foreach (BookData b in AppManager.bookMasterList)
         {
             TMP_Dropdown.OptionData data = new TMP_Dropdown.OptionData();
-            data.text = b.Data.title;
+            data.text = b.title;
             bookDrop.options.Add(data);
         }
 

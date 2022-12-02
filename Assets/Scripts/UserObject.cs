@@ -11,7 +11,7 @@ public class UserObject : MonoBehaviour
     private Dictionary<string, int> authorScores; // The score for each author present in the user premade shelves
     private Dictionary<Genre, int> genreScores; // The score for each genre present in the user premade shelves
 
-    public int GetBookScore(BookObject book) // This returns a sum of the scores of the book's author and the book's genre
+    public int GetBookScore(BookData book) // This returns a sum of the scores of the book's author and the book's genre
     {
         //string author = book.getAuthor(); // Need a method to recover the author of the book
         //Genre genre = book.getGenre(); // Need a method to recover the genre of the book
@@ -84,19 +84,19 @@ public class UserObject : MonoBehaviour
 
     private void ShelfAuthorScore(ref Dictionary<string, int> scores, Shelf shelf, int increment) // Scans a premade shelf and increase the score of the authors it contains
     {
-        IEnumerable<BookObject> booksHeld = shelf.GetBooks(); // Need a method to recover the books in a shelf
+        IEnumerable<BookData> booksHeld = shelf.GetBooks(); // Need a method to recover the books in a shelf
 
-        foreach (BookObject book in booksHeld) {
-            IncrementScore(ref scores, book.Data.author, increment);
+        foreach (BookData book in booksHeld) {
+            IncrementScore(ref scores, book.author, increment);
         }
     }
 
     private void ShelfGenreScore(ref Dictionary<Genre, int> scores, Shelf shelf, int increment) // Scans a premade shelf and increase the score of the genres it contains
     { 
-        IEnumerable<BookObject> booksHeld = shelf.GetBooks();
+        IEnumerable<BookData> booksHeld = shelf.GetBooks();
 
-        foreach (BookObject book in booksHeld) {
-            IncrementScore(ref scores, book.Data.genre, increment);
+        foreach (BookData book in booksHeld) {
+            IncrementScore(ref scores, book.genre, increment);
         }
     }
 
