@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
 public class LogInPage : MonoBehaviour
-{   
+{
     [SerializeField] GameObject WebApp;
 
     [SerializeField] TMP_InputField username;
@@ -24,7 +24,70 @@ public class LogInPage : MonoBehaviour
     public void OnLoginButtonClicked()
     {
         login.interactable = false;
-        StartCoroutine (Login());
+        StartCoroutine(Login());
+    }
+
+    public void checkIfData(string w, string username, string password)
+    {
+        if (w == "" || w == null)
+        {
+            //{ TOREAD, READ, FAVORITES, RECOMMENDATION, READING, DONOTREC};
+
+            UserData newData = new UserData();
+
+            List<Shelf> newShelves = new List<Shelf>();
+
+            newData._customShelves = new List<Shelf>();
+
+            Shelf toRead = new Shelf();
+            toRead.type = ShelfType.TOREAD;
+            newData._customShelves.Add(toRead);
+
+            Shelf read = new Shelf();
+            read.type = ShelfType.READ;
+            newData._customShelves.Add(read);
+
+            Shelf favorites = new Shelf();
+            favorites.type = ShelfType.FAVORITES;
+            newData._customShelves.Add(favorites);
+
+
+            Shelf rec = new Shelf();
+            rec.type = ShelfType.RECOMMENDATION;
+            newData._customShelves.Add(rec);
+
+            Shelf reading = new Shelf();
+            reading.type = ShelfType.READING;
+            newData._customShelves.Add(reading);
+
+            Shelf donotrec = new Shelf();
+            donotrec.type = ShelfType.DONOTREC;
+            newData._customShelves.Add(donotrec);
+
+            newData.SetNewUsername(username);
+            newData.SetNewPassword(password);
+
+            UserObject newUser = new UserObject();
+
+            newUser.Data = newData;
+
+            AppManager.CurrentUser = newUser;
+
+
+            Debug.Log("New user initiated");
+
+
+
+
+        }
+        else
+        {
+            var token = JsonUtility.FromJson<UserObject>(w);
+
+            AppManager.CurrentUser = token;
+
+            Debug.Log("User Data loaded.");
+        }
     }
 
     IEnumerator Login()
@@ -46,7 +109,10 @@ public class LogInPage : MonoBehaviour
 					errorMessage.text = "invalid username or password!";
 					Debug.Log("<color=red>"+w.text+"</color>");//error
 				} else {
-					//open welcom panel
+                    //open welcome panel
+
+                    Debug.Log(w.text);
+                    checkIfData(w.text, username.text, password.text); 
 					WebApp.SetActive (true);
 					Debug.Log("<color=green>"+w.text+"</color>");//user exist
 

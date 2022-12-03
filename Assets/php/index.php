@@ -14,7 +14,7 @@
 		if(count($all) > 0){
 			echo $all[0]["userData"];
 		}
-		exit();
+		
 	}
 
 	function pushUserData($data, $username, $password){
@@ -25,10 +25,19 @@
 
 		try{
 			$st->execute(array($data, $username, sha1($password)));
+			$all=$st->fetchAll();
+			if (count($all) > 0){
+
+				echo "SERVER: ID#".$all[0]["userData"];
+			}
+			else{
+				echo $st->rowCount() . " userData";
+			}
+			
 		} catch(PDOException $e){
 			echo $sql."<br>".$e->getMessage();
 		}
-		exit();
+		
 	}
 
 	function Login($username, $password){
@@ -41,7 +50,13 @@
 		$all=$st->fetchAll();
 		if (count($all) == 1){
 			echo "SERVER: ID#".$all[0]["username"];
-			exit();
+			echo "SERVER: Login successful!";
+			
+		}
+		else{
+			//if username or password are empty strings
+			
+			echo "error - Duplicate users. Contact admin!";
 		}
 
 		//if username or password are empty strings
@@ -58,6 +73,9 @@
 		isset($_POST["password"]) && !empty($_POST["password"])){
 
 		getUserData($_POST["username"], $_POST["password"]);
+	}
+	else{
+		echo "error - Empty fields!";
 	}
 
 	// getUserData("johndoe", "johndoe");
