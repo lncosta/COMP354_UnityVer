@@ -27,7 +27,7 @@ public class LogInPage : MonoBehaviour
 
     public void checkIfData(string w, string username, string password)
     {
-        if (w == "" || w == null)
+        if (w.Equals("NONE") || w.Equals("") || w == null)
         {
             //{ TOREAD, READ, FAVORITES, RECOMMENDATION, READING, DONOTREC};
 
@@ -72,7 +72,7 @@ public class LogInPage : MonoBehaviour
             AppManager.CurrentUser = newUser;
 
 
-            Debug.Log("New user initiated");
+            Debug.Log("New user initiated:" + newUser.Data.UserName);
 
 
 
@@ -84,7 +84,7 @@ public class LogInPage : MonoBehaviour
 
             AppManager.CurrentUser = token;
 
-            Debug.Log("User Data loaded.");
+            Debug.Log("User Data loaded." + token.Data.UserName);
         }
     }
 

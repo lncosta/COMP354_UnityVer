@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad1a58de9bebc7a47a1bb57d21a5839b, type: 3}
   m_Name: BookData 8
   m_EditorClassIdentifier: 
-  id: 13
-  title: The Ultimate Hitchhiker's Guide to the Galaxy (Hitchhiker's Guide to the
-    Galaxy  #1-5)
+  id: 
+  title: 
   shelf:
     type: 0
     shelfName: 
@@ -24,6 +23,6 @@ MonoBehaviour:
   isRecommended: 0
   canBeRecommended: 1
   genre: 0
-  author: Douglas Adams
-  rating: 4.38
+  author: 
+  rating: 0
   bookCover: {fileID: 0}

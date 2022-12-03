@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad1a58de9bebc7a47a1bb57d21a5839b, type: 3}
   m_Name: BookData 14
   m_EditorClassIdentifier: 
-  id: 23
-  title: 'Bryson''s Dictionary of Troublesome Words: A Writer''s Guide to Getting
-    It Right'
+  id: 
+  title: 
   shelf:
     type: 0
     shelfName: 
@@ -23,7 +22,7 @@ MonoBehaviour:
   isFavorite: 0
   isRecommended: 0
   canBeRecommended: 1
-  genre: 2
-  author: Bill Bryson
-  rating: 3.87
+  genre: 0
+  author: 
+  rating: 0
   bookCover: {fileID: 0}

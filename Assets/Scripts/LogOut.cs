@@ -30,13 +30,14 @@ public class LogOut : MonoBehaviour
         var json = JsonUtility.ToJson(AppManager.CurrentUser);
         WWWForm form = new WWWForm();
         form.AddField("username", AppManager.CurrentUser.Data.UserName);
+        Debug.Log(json);
         form.AddField("password", AppManager.CurrentUser.Data.Password);
         form.AddField("data", json);
 
-        UserObject token = new UserObject();
+        //UserObject token = new UserObject();
 
-        JsonUtility.FromJsonOverwrite(json, token);
-        Debug.Log("Data from token: " + token.Data.CustomShelves.ToString());
+        //JsonUtility.FromJsonOverwrite(json, token);
+        //Debug.Log("Data from token: " + token.Data.CustomShelves[0].booksHeld.ToString());
 
         WWW w = new WWW(url, form);
         yield return w;

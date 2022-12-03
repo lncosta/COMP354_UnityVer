@@ -36,7 +36,7 @@ public class BookData : ScriptableObject
 
         int genreInt = Random.Range(0, 7); 
         newBook.Init(id, name, author, rating, (Genre)genreInt);
-        EditorUtility.SetDirty(newBook);
+        //EditorUtility.SetDirty(newBook);
         AssetDatabase.SaveAssetIfDirty(newBook);
 
         return newBook;

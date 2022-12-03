@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad1a58de9bebc7a47a1bb57d21a5839b, type: 3}
   m_Name: BookData 78
   m_EditorClassIdentifier: 
-  id: 132
-  title: 'How to Buy  Sell & Profit on eBay: Kick-Start Your Home-Based Business
-    in Just Thirty Days'
+  id: 
+  title: 
   shelf:
     type: 0
     shelfName: 
@@ -23,7 +22,7 @@ MonoBehaviour:
   isFavorite: 0
   isRecommended: 0
   canBeRecommended: 1
-  genre: 3
-  author: Adam Ginsberg
-  rating: 3.48
+  genre: 0
+  author: 
+  rating: 0
   bookCover: {fileID: 0}

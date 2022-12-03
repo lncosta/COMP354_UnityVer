@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad1a58de9bebc7a47a1bb57d21a5839b, type: 3}
   m_Name: BookData 62
   m_EditorClassIdentifier: 
-  id: 98
-  title: What to Expect the First Year (What to Expect)
+  id: 
+  title: 
   shelf:
     type: 0
     shelfName: 
@@ -23,6 +23,6 @@ MonoBehaviour:
   isRecommended: 0
   canBeRecommended: 1
   genre: 0
-  author: Heidi Murkoff/Sharon Mazel/Arlene Eisenberg/Sandee Hathaway/Mark D. Widome
-  rating: 3.89
+  author: 
+  rating: 0
   bookCover: {fileID: 0}

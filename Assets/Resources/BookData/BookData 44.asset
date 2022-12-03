@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad1a58de9bebc7a47a1bb57d21a5839b, type: 3}
   m_Name: BookData 44
   m_EditorClassIdentifier: 
-  id: 74
-  title: The John McPhee Reader (John McPhee Reader  #1)
+  id: 
+  title: 
   shelf:
     type: 0
     shelfName: 
@@ -23,6 +23,6 @@ MonoBehaviour:
   isRecommended: 0
   canBeRecommended: 1
   genre: 0
-  author: John McPhee/William Howarth
-  rating: 4.42
+  author: 
+  rating: 0
   bookCover: {fileID: 0}

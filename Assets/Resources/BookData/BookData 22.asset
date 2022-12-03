@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad1a58de9bebc7a47a1bb57d21a5839b, type: 3}
   m_Name: BookData 22
   m_EditorClassIdentifier: 
-  id: 31
-  title: The Lord of the Rings (The Lord of the Rings  #1-3)
+  id: 
+  title: 
   shelf:
     type: 0
     shelfName: 
@@ -22,7 +22,7 @@ MonoBehaviour:
   isFavorite: 0
   isRecommended: 0
   canBeRecommended: 1
-  genre: 2
-  author: J.R.R. Tolkien
-  rating: 4.5
+  genre: 0
+  author: 
+  rating: 0
   bookCover: {fileID: 0}
