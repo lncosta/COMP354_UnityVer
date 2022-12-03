@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Text.RegularExpressions;
 
 public class AddBook : MonoBehaviour
 {
@@ -64,17 +65,19 @@ public class AddBook : MonoBehaviour
     public void populateDrops()
     {
         bookDrop.options.Clear();
+        shelfDrop.options.Clear(); 
 
         foreach (BookObject b in AppManager.bookMasterList)
         {
             TMP_Dropdown.OptionData data = new TMP_Dropdown.OptionData();
-            string titleAbriged = b.Data.id + " - " + b.Data.title;
+            string titleAbriged = b.Data.id + "- " + b.Data.title;
             if (b.Data.title.Length > 46)
             {
-                titleAbriged = b.Data.id + " - " + b.Data.title.Substring(0, 45) + "...";
+                titleAbriged = b.Data.id + "- " + b.Data.title.Substring(0, 45) + "...";
             }
            
             data.text = titleAbriged;
+            
             bookDrop.options.Add(data);
         }
 
@@ -88,6 +91,49 @@ public class AddBook : MonoBehaviour
 
     public void addBookToShelf()
     {
-        //TODO
+       
+
+        string valueBook = bookDrop.options[bookDrop.value].text;
+        string idBook = valueBook.Split("-")[0];
+        string valueShelf = shelfDrop.options[shelfDrop.value].text;
+
+        Debug.Log(valueShelf + "->" + valueBook);
+
+        //Find shelf
+
+        Shelf addHere = null;
+        BookObject toAdd = null;
+
+        foreach (BookObject b in AppManager.bookMasterList)
+        {
+            if (idBook.Equals(b.Data.id))
+            {
+                toAdd = b;
+            }
+        }
+        foreach (Shelf s in AppManager.CurrentUser.Data.CustomShelves)
+        {
+            if (s.type.ToString().Equals(valueShelf))
+            {
+                addHere = s;
+            }
+           
+        }
+
+        
+
+        if(toAdd != null && addHere != null)
+        {
+            foreach (Shelf s in AppManager.CurrentUser.Data.CustomShelves)
+            {
+                if (toAdd != null && s.booksHeld.Contains(toAdd) && s.type != ShelfType.FAVORITES)
+                {
+                    s.RemoveBook(toAdd); //Remove any duplicates
+                }
+            }
+
+            addHere.AddBook(toAdd);
+            shelfNameUI.text = "Book was added to shelf!";
+        }
     }
 }

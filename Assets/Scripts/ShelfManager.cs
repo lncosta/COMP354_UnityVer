@@ -6,14 +6,14 @@ using UnityEngine.UI;
 
 public class ShelfManager : MonoBehaviour
 {
-   
-   
+
+
     public GameObject blankBookSlot;
     public GameObject shelfPanel;
     public TextMeshProUGUI bookDescriptionText;
     public GameObject FavoriteButton;
 
-    public BookObject currentBook; 
+    public BookObject currentBook;
 
 
     public GameObject activeShelfContainer;
@@ -23,6 +23,9 @@ public class ShelfManager : MonoBehaviour
 
 
     public TextMeshProUGUI shelfName;
+
+
+    public TMP_Dropdown moveToShelf;
 
 
 
@@ -35,19 +38,20 @@ public class ShelfManager : MonoBehaviour
         SetDescription("", false);
 
         AppManager.LoadBooks();
+        populateDrops();
 
-        
+
     }
     public void setActive(int type)
     {
         currentShelf = null;
         foreach (Shelf shelf in AppManager.CurrentUser.Data.CustomShelves)
         { //Set Shelf Visibility for Current User
-           
+
             if ((int)shelf.type == type)
             {
                 currentShelf = shelf;
-                shelfName.text = shelf.type.ToString(); 
+                shelfName.text = shelf.type.ToString();
                 ClearBookSlots();
                 MakeBookSlots();
             }
@@ -60,14 +64,14 @@ public class ShelfManager : MonoBehaviour
     public List<List<BookObject>> sortByGenre(ShelfType type)
     {
         Shelf currentShelf = null;
-        foreach(Shelf shelf in AppManager.CurrentUser.Data.CustomShelves)
+        foreach (Shelf shelf in AppManager.CurrentUser.Data.CustomShelves)
         {
-            if(shelf.type == type)
+            if (shelf.type == type)
             {
                 currentShelf = shelf;
             }
         }
-        if(currentShelf == null)
+        if (currentShelf == null)
         {
             return null;
         }
@@ -82,9 +86,9 @@ public class ShelfManager : MonoBehaviour
         List<BookObject> comedy = new List<BookObject>();
         List<BookObject> children = new List<BookObject>();
 
-        foreach(BookObject book in currentBooks)
+        foreach (BookObject book in currentBooks)
         {
-            if((book.Data.genre & Genre.FICTION) > 0)
+            if ((book.Data.genre & Genre.FICTION) > 0)
             {
                 fiction.Add(book);
             }
@@ -137,7 +141,7 @@ public class ShelfManager : MonoBehaviour
     {
         currentBook = newBook;
         bookDescriptionText.text = bookDescription;
-        FavoriteButton.GetComponent<FavoriteButton>().Click(activeButton);
+        UpdateFaveButton();
     }
 
 
@@ -159,7 +163,7 @@ public class ShelfManager : MonoBehaviour
     {
         if (currentShelf != null)
         {
-            foreach(BookObject book in currentShelf.GetBooks())
+            foreach (BookObject book in currentShelf.GetBooks())
             {
                 GameObject temp = Instantiate(blankBookSlot, shelfPanel.transform.position, Quaternion.identity);
                 temp.transform.SetParent(shelfPanel.transform);
@@ -181,21 +185,138 @@ public class ShelfManager : MonoBehaviour
     {
         if (currentBook != null)
         {
-            bool currentFavoriteStatus = currentBook.FavoriteButtonClicked();
 
-            Shelf favoriteShelf = GameObject.FindGameObjectsWithTag("FavoriteShelf")[0].GetComponent<Shelf>();
 
-            if (currentFavoriteStatus)
+            Shelf favoriteShelf = null;
+
+            foreach (Shelf s in AppManager.CurrentUser.Data.CustomShelves)
             {
-                favoriteShelf.AddBook(currentBook); 
+                if (s.type == ShelfType.FAVORITES)
+                {
+                    favoriteShelf = s;
+                }
+            }
+
+            if (favoriteShelf == null)
+            {
+                return;
+            }
+
+            bool currentFavoriteStatus = favoriteShelf.CheckIfContains(currentBook);
+
+            if (!currentFavoriteStatus)
+            {
+                currentShelf.RemoveBook(currentBook);
+                favoriteShelf.AddBook(currentBook);
+               
+                FavoriteButton.GetComponent<FavoriteButton>().Click(true);
             }
             else
             {
-                favoriteShelf.RemoveBook(currentBook); 
+                favoriteShelf.RemoveBook(currentBook);
+                FavoriteButton.GetComponent<FavoriteButton>().Click(false);
             }
 
-            currentBook.Data.isFavorite = !currentBook.Data.isFavorite;
+            //currentBook.Data.isFavorite = !currentBook.Data.isFavorite;
+
+
         }
     }
 
+    public void UpdateFaveButton()
+    {
+        if (currentBook != null)
+        {
+
+
+            Shelf favoriteShelf = null;
+
+            foreach (Shelf s in AppManager.CurrentUser.Data.CustomShelves)
+            {
+                if (s.type == ShelfType.FAVORITES)
+                {
+                    favoriteShelf = s;
+                }
+            }
+
+            if (favoriteShelf == null)
+            {
+                return;
+            }
+
+            bool currentFavoriteStatus = favoriteShelf.CheckIfContains(currentBook);
+
+            if (!currentFavoriteStatus)
+            {
+
+                FavoriteButton.GetComponent<FavoriteButton>().Click(false);
+            }
+            else
+            {
+
+                FavoriteButton.GetComponent<FavoriteButton>().Click(true);
+            }
+
+        }
+
+    }
+
+    public void populateDrops()
+    {
+       
+        moveToShelf.options.Clear();
+
+        foreach (Shelf b in AppManager.CurrentUser.Data.CustomShelves)
+        {
+            TMP_Dropdown.OptionData data = new TMP_Dropdown.OptionData();
+            data.text = b.type.ToString();
+           moveToShelf.options.Add(data);
+        }
+        TMP_Dropdown.OptionData data2 = new TMP_Dropdown.OptionData();
+        data2.text = "REMOVE";
+        moveToShelf.options.Add(data2); 
+    }
+
+    public void MoveCurrentBook()
+    {
+
+
+        string valueShelf = moveToShelf.options[moveToShelf.value].text;
+
+
+        //Find shelf
+
+        Shelf addHere = null;
+
+
+
+        foreach (Shelf s in AppManager.CurrentUser.Data.CustomShelves)
+        {
+            if (s.type.ToString().Equals(valueShelf))
+            {
+                addHere = s;
+            }
+
+        }
+
+
+
+        if (currentBook != null && addHere != null)
+        {
+
+
+            addHere.AddBook(currentBook);
+            if (currentShelf.type != ShelfType.FAVORITES)
+            {
+                currentShelf.RemoveBook(currentBook);
+            }
+
+
+        }
+        else if (addHere == null && valueShelf.Equals("REMOVE"))
+        {
+            currentShelf.RemoveBook(currentBook);
+        }
+
+    }
 }

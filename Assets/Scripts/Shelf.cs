@@ -20,7 +20,7 @@ public class Shelf {
 
     public ShelfType type;
     public string shelfName;
-    [SerializeField] protected List<BookObject> booksHeld = new List<BookObject>();
+    [SerializeField] public List<BookObject> booksHeld = new List<BookObject>();
 
     [SerializeField] public List<string> ids; 
 
@@ -49,6 +49,11 @@ public class Shelf {
             ids.Remove(book.Data.id);
         }
         
+    }
+
+    public bool CheckIfContains(BookObject book)
+    {
+        return booksHeld.Contains(book);
     }
 
     // Casting down to IEnumerable prevents other classes 
