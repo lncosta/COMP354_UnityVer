@@ -49,7 +49,6 @@ public class LogInPage : MonoBehaviour
             checkCookie = true;
             if(cookie != "")
             {
-                login.interactable = false;
                 StartCoroutine(LoginWithCookie());
             }
             
