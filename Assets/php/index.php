@@ -4,35 +4,45 @@
 	
 	function getUserData($username, $password){
 		GLOBAL $con;
-
-		$sql = "SELECT userData FROM User WHERE username=? AND password=?";
+		$enc = sha1($password); 
+		$sql = "SELECT userData, username FROM user WHERE username=? AND password=?";
 		$st = $con->prepare($sql);
 
 		$st->execute(array($username, sha1($password)));
 		$all = $st->fetchAll();
 
-		if(count($all) > 0){
-			echo $all[0]["userData"];
+		if(count($all) >0){
+
+			echo $all[0]['userData'];
+			
+			
 		}
+		else{
+			echo "error";
+		}
+
+		
+		
+		
+		
 		
 	}
 
 	function pushUserData($data, $username, $password){
 		GLOBAL $con;
 
-		$sql = "UPDATE User SET userData=? WHERE username=? AND password=?";
+		$sql = "UPDATE User SET userData='$data' WHERE username='$username'";
 		$st = $con->prepare($sql);
 
 		try{
-			$st->execute(array($data, $username, sha1($password)));
+			$st->execute();
 			$all=$st->fetchAll();
 			if (count($all) > 0){
 
-				echo "SERVER: ID#".$all[0]["userData"];
+				echo $all[0]['userData'];
 			}
-			else{
-				echo $st->rowCount() . " userData";
-			}
+
+			exit();
 			
 		} catch(PDOException $e){
 			echo $sql."<br>".$e->getMessage();

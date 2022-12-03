@@ -4,8 +4,9 @@ using UnityEngine;
 
 
 [System.Serializable]
+[SerializeField]
 public class UserObject
 {
     [SerializeField] UserData _data;
-    public UserData Data { get => _data; set { _data = value; } }
+    [SerializeField] public UserData Data { get => _data; set { _data = value; } }
 }

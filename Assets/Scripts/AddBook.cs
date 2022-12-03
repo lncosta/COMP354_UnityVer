@@ -134,6 +134,7 @@ public class AddBook : MonoBehaviour
 
             addHere.AddBook(toAdd);
             shelfNameUI.text = "Book was added to shelf!";
+            AppManager.refresh = true; 
         }
     }
 }

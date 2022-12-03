@@ -31,10 +31,12 @@ public class BookData : ScriptableObject
     public static BookData Create(string id, string name, string author, float rating, Genre genre)
     {
         BookData newBook = ScriptableObject.CreateInstance<BookData>();
+       
         AssetDatabase.CreateAsset(newBook, AssetDatabase.GenerateUniqueAssetPath("Assets/Resources/BookData/BookData.asset"));
 
         int genreInt = Random.Range(0, 7); 
         newBook.Init(id, name, author, rating, (Genre)genreInt);
+        //EditorUtility.SetDirty(newBook);
         AssetDatabase.SaveAssetIfDirty(newBook);
 
         return newBook;
