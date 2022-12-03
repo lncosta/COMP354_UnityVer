@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad1a58de9bebc7a47a1bb57d21a5839b, type: 3}
   m_Name: BookData 65
   m_EditorClassIdentifier: 
-  id: 
-  title: 
+  id: 103
+  title: God Emperor of Dune (Dune Chronicles  #4)
   shelf:
     type: 0
     shelfName: 
@@ -22,7 +22,7 @@ MonoBehaviour:
   isFavorite: 0
   isRecommended: 0
   canBeRecommended: 1
-  genre: 0
-  author: 
-  rating: 0
+  genre: 5
+  author: Frank Herbert
+  rating: 3.84
   bookCover: {fileID: 0}

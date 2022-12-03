@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad1a58de9bebc7a47a1bb57d21a5839b, type: 3}
   m_Name: BookData 12
   m_EditorClassIdentifier: 
-  id: 
-  title: 
+  id: 21
+  title: A Short History of Nearly Everything
   shelf:
     type: 0
     shelfName: 
@@ -22,7 +22,7 @@ MonoBehaviour:
   isFavorite: 0
   isRecommended: 0
   canBeRecommended: 1
-  genre: 0
-  author: 
-  rating: 0
+  genre: 4
+  author: Bill Bryson
+  rating: 4.21
   bookCover: {fileID: 0}

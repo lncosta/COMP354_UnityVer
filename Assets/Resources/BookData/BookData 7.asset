@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad1a58de9bebc7a47a1bb57d21a5839b, type: 3}
   m_Name: BookData 7
   m_EditorClassIdentifier: 
-  id: 
-  title: 
+  id: 12
+  title: 'The Ultimate Hitchhiker''s Guide: Five Complete Novels and One Story (Hitchhiker''s
+    Guide to the Galaxy  #1-5)'
   shelf:
     type: 0
     shelfName: 
@@ -22,7 +23,7 @@ MonoBehaviour:
   isFavorite: 0
   isRecommended: 0
   canBeRecommended: 1
-  genre: 0
-  author: 
-  rating: 0
+  genre: 4
+  author: Douglas Adams
+  rating: 4.38
   bookCover: {fileID: 0}

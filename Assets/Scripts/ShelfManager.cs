@@ -60,6 +60,14 @@ public class ShelfManager : MonoBehaviour
         }
     }
 
+    public void Refresh()
+    {
+        ClearBookSlots();
+        MakeBookSlots();
+    }
+
+    
+    
 
     public List<List<BookObject>> sortByGenre(ShelfType type)
     {

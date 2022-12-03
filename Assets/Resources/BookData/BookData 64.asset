@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad1a58de9bebc7a47a1bb57d21a5839b, type: 3}
   m_Name: BookData 64
   m_EditorClassIdentifier: 
-  id: 
-  title: 
+  id: 100
+  title: 'Simply Beautiful Beading: 53 Quick and Easy Projects'
   shelf:
     type: 0
     shelfName: 
@@ -23,6 +23,6 @@ MonoBehaviour:
   isRecommended: 0
   canBeRecommended: 1
   genre: 0
-  author: 
-  rating: 0
+  author: Heidi Boyd
+  rating: 3.78
   bookCover: {fileID: 0}

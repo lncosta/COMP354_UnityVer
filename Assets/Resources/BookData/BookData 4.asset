@@ -22,7 +22,7 @@ MonoBehaviour:
   isFavorite: 0
   isRecommended: 0
   canBeRecommended: 1
-  genre: 2
+  genre: 6
   author: "J.K. Rowling/Mary GrandPr\xE9"
   rating: 4.78
   bookCover: {fileID: 0}

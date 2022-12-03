@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor; 
 
 public class AppManager : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class AppManager : MonoBehaviour
     public int currentPage;
 
     public static List<BookObject> bookMasterList;
+
+    public static bool refresh = false; 
 
     
     private void Awake()

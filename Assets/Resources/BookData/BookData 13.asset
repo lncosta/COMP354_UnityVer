@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad1a58de9bebc7a47a1bb57d21a5839b, type: 3}
   m_Name: BookData 13
   m_EditorClassIdentifier: 
-  id: 
-  title: 
+  id: 22
+  title: Bill Bryson's African Diary
   shelf:
     type: 0
     shelfName: 
@@ -22,7 +22,7 @@ MonoBehaviour:
   isFavorite: 0
   isRecommended: 0
   canBeRecommended: 1
-  genre: 0
-  author: 
-  rating: 0
+  genre: 3
+  author: Bill Bryson
+  rating: 3.44
   bookCover: {fileID: 0}

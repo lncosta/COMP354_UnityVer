@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad1a58de9bebc7a47a1bb57d21a5839b, type: 3}
   m_Name: BookData 73
   m_EditorClassIdentifier: 
-  id: 
-  title: 
+  id: 122
+  title: The Power of One (The Power of One  #1)
   shelf:
     type: 0
     shelfName: 
@@ -23,6 +23,6 @@ MonoBehaviour:
   isRecommended: 0
   canBeRecommended: 1
   genre: 0
-  author: 
-  rating: 0
+  author: Bryce Courtenay
+  rating: 4.35
   bookCover: {fileID: 0}

@@ -22,7 +22,7 @@ public class Shelf {
     public string shelfName;
     [SerializeField] public List<BookObject> booksHeld = new List<BookObject>();
 
-    [SerializeField] public List<string> ids; 
+    [SerializeField] public List<string> ids = new List<string>(); 
 
     //public GameObject shelfContainerInUI;
 
