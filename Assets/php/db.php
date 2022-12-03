@@ -1,5 +1,5 @@
 <?php
-header("Access-Control-Allow-Origin: *");
+	header("Access-Control-Allow-Origin: *");
     $host   = "mysql:dbname=book_project;host=localhost:3306";
 	$user   = "root";
 	$pass   = "";

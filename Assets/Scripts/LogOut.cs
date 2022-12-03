@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Runtime.InteropServices;
 
 public class LogOut : MonoBehaviour
 {
     [SerializeField] string url;
     [SerializeField] GameObject logIn;
     [SerializeField] GameObject app;
+
+    [DllImport("__Internal")]
+    private static extern void deleteCookie(string name);
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,10 +66,9 @@ public class LogOut : MonoBehaviour
                     //open welcom panel
                     logIn.SetActive(true);
                     Debug.Log("<color=green>" + w.text + "User Data Saved" + "</color>");//user exist
+                    deleteCookie("user");
                     app.SetActive(false);
                     
-                    
-
 
                 }
             }

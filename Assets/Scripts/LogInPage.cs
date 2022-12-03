@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.InteropServices;
 
 public class LogInPage : MonoBehaviour
 {
@@ -21,10 +22,42 @@ public class LogInPage : MonoBehaviour
 
     WWWForm form;
 
+    private string cookie = "";
+    private bool checkCookie = false;
+
+
+    [DllImport("__Internal")]
+    private static extern void setCookie(string name, string value, int exdays);
+
+
+    [DllImport("__Internal")]
+    private static extern string getCookie(string name);
+
+
     public void OnLoginButtonClicked()
     {
         login.interactable = false;
         StartCoroutine(Login());
+    }
+
+    private void Update()
+    { 
+        if(!checkCookie)
+        {
+            cookie = getCookie("user");
+            Debug.Log("Cookie: " + cookie);
+            checkCookie = true;
+            if(cookie != "")
+            {
+                login.interactable = false;
+                StartCoroutine(LoginWithCookie());
+            }
+            
+        }
+        else
+        {
+            return;
+        }
     }
 
     public void checkIfData(string w, string username, string password)
@@ -94,8 +127,9 @@ public class LogInPage : MonoBehaviour
     {
         form = new WWWForm();
 
-        form.AddField ("username", username.text);
-        form.AddField ("password", password.text);
+        form.AddField("username", username.text);
+        form.AddField("password", password.text);
+    
 
         WWW w = new WWW (url, form);
         yield return w;
@@ -112,10 +146,11 @@ public class LogInPage : MonoBehaviour
                     //open welcome panel
 
                     Debug.Log(w.text);
-                    checkIfData(w.text, username.text, password.text); 
+                    checkIfData(w.text, username.text, password.text);
 					WebApp.SetActive (true);
 					Debug.Log("<color=green>"+w.text+"</color>");//user exist
-
+                    string cookieData = username.text + "," + password.text;
+                    setCookie("user", cookieData, 1);
                     
 				}
 			}
@@ -126,4 +161,55 @@ public class LogInPage : MonoBehaviour
 
 		w.Dispose ();
     }
+
+    IEnumerator LoginWithCookie()
+    {
+        Debug.Log("<color=green>" + "Log in with cookie was called!" + "</color>");
+        form = new WWWForm();
+
+
+        string[] userInfo = cookie.Split(',');
+        Debug.Log("<color=green>" + "Username: " + userInfo[0] + "</color>");
+        Debug.Log("<color=green>" + "Password: " + userInfo[1] + "</color>");
+
+
+        form.AddField("username", userInfo[0]);
+        form.AddField("password", userInfo[1]);
+
+
+
+        WWW w = new WWW(url, form);
+        yield return w;
+
+        if (w.error != null)
+        {
+            errorMessage.text = "404 not found!";
+            Debug.Log("<color=red>" + w.text + "</color>");//error
+        }
+        else
+        {
+            if (w.isDone)
+            {
+                if (w.text.Contains("error"))
+                {
+                    errorMessage.text = "invalid username or password!";
+                    Debug.Log("<color=red>" + w.text + "</color>");//error
+                }
+                else
+                {
+                    //open welcome panel
+                    Debug.Log(w.text);
+                    checkIfData(w.text, userInfo[0], userInfo[1]);
+                    WebApp.SetActive(true);
+                    Debug.Log("<color=green>" + w.text + "</color>");//user exist
+
+                }
+            }
+        }
+
+
+        w.Dispose();
+    }
+
+
 }
