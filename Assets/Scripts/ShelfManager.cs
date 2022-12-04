@@ -31,6 +31,9 @@ public class ShelfManager : MonoBehaviour
     public TextMeshProUGUI userName;
 
 
+    public Recommendation recManager; 
+
+
 
 
     private void OnEnable()
@@ -55,6 +58,17 @@ public class ShelfManager : MonoBehaviour
 
             if ((int)shelf.type == type)
             {
+                if(type == (int)ShelfType.RECOMMENDATION)
+                {
+                    List<BookObject> toRec = recManager.getRecommendations(AppManager.bookMasterList);
+                    shelf.booksHeld = toRec; 
+                   /*foreach (BookObject b in toRec)
+                    {
+                        shelf.AddBook(b); //Populate Recommendations. 
+                    }*/
+
+                }
+
                 currentShelf = shelf;
                 shelfName.text = shelf.type.ToString();
                 ClearBookSlots();

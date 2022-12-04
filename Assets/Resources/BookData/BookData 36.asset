@@ -9,21 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: 8a8314756da347c48a8c08a506cf8674, type: 3}
-  m_Name: BookData 36
-  m_EditorClassIdentifier: 
-  id: 
-  title: 
-  shelf: {fileID: 0}
-  isFavorite: 0
-  isRecommended: 0
-  canBeRecommended: 1
-  genre: 0
-  author: 
-  rating: 0
-=======
-  m_Script: {fileID: 11500000, guid: ad1a58de9bebc7a47a1bb57d21a5839b, type: 3}
   m_Name: BookData 36
   m_EditorClassIdentifier: 
   id: 61
@@ -36,8 +22,7 @@ MonoBehaviour:
   isFavorite: 0
   isRecommended: 0
   canBeRecommended: 1
-  genre: 5
+  genre: 2
   author: Zilpha Keatley Snyder
   rating: 4.17
->>>>>>> main
   bookCover: {fileID: 0}

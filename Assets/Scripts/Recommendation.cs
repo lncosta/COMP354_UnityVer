@@ -1,15 +1,19 @@
-﻿using System;
+﻿using System.Collections;
 using System.Collections.Generic;
-public class Recommendation
+using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
+public class Recommendation: MonoBehaviour
 {
-	Random rnd = new Random();
+	public int rnd; 
 	private UserObject user;
-	public Recommendation(AppManager appManager)
-	{
-		//user = appManager.getCurrentUser; // Need a way to recover the current user of the app
-	}
 
-	public List<BookObject> getRecommendations(List<BookObject> booksDatabase) // Will return the first 10 books after sorting the whole database
+    public void Start()
+    {
+		
+		user = AppManager.CurrentUser; 
+    }
+    public List<BookObject> getRecommendations(List<BookObject> booksDatabase) // Will return the first 10 books after sorting the whole database
     {
 		List<BookObject> recommendations = new List<BookObject>();
 		IEnumerable<BookObject> doNotRec = user.getShelf(ShelfType.DONOTREC).GetBooks(); // Get the books that shouldn't be recommended
@@ -34,6 +38,7 @@ public class Recommendation
             else
             {
 				recommendations.Add(booksDatabase[next]);
+				next++;
 
 			}
 
@@ -44,6 +49,6 @@ public class Recommendation
 
 	private int bookComparer(BookObject b1, BookObject b2) // Compares the score of two books
     {
-		return (user.GetBookScore(b1) - user.GetBookScore(b2)+rnd.Next(-2, 2)); // Add an element of randomness in the sorting
+		return (user.GetBookScore(b1) - user.GetBookScore(b2)+Random.Range(-2, 2)); // Add an element of randomness in the sorting
     }
 }
