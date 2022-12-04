@@ -28,6 +28,30 @@
 		
 	}
 
+		
+	function setUserData($username, $password){
+		GLOBAL $con;
+		$enc = sha1($password); 
+		$sql = ("INSERT INTO user (username, password, email, to_read_shelf, reading_shelf, read_shelf, favorite_shelf, recommendation_shelf, userData) VALUES ('$username','$enc','$username','1','1','1','1','1','')");
+		$st = $con->prepare($sql);
+
+		try{
+			$st->execute();
+			$all=$st->fetchAll();
+			if (count($all) > 0){
+
+				echo "User Registered!";
+			}
+
+			exit();
+			
+		} catch(PDOException $e){
+			echo "error".$sql."<br>".$e->getMessage();
+		}
+
+			
+	}
+
 	function pushUserData($data, $username, $password){
 		GLOBAL $con;
 
@@ -69,9 +93,7 @@
 			echo "error - Duplicate users. Contact admin!";
 		}
 
-		//if username or password are empty strings
-		echo "SERVER: Login successful!";
-		exit();
+		
 	}
 
 
@@ -79,7 +101,12 @@
 	isset($_POST["password"]) && !empty($_POST["password"])){
 		
 		pushUserData($_POST["data"], $_POST["username"], $_POST["password"]);
-	} else if (isset($_POST["username"]) && !empty($_POST["username"]) && 
+	} 
+	else if(isset($_POST["username"]) && !empty($_POST["username"]) && 
+	isset($_POST["password"]) && !empty($_POST["password"]) && isset($_POST["IsSetToRegister"] ) && !empty($_POST["IsSetToRegister"])){
+		setUserData($_POST["username"], $_POST["password"]);
+	}
+	else if (isset($_POST["username"]) && !empty($_POST["username"]) && 
 		isset($_POST["password"]) && !empty($_POST["password"])){
 
 		getUserData($_POST["username"], $_POST["password"]);

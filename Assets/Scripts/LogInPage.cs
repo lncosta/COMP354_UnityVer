@@ -40,6 +40,11 @@ public class LogInPage : MonoBehaviour
         StartCoroutine(Login());
     }
 
+    public void OnRegisterButtonClicked()
+    {
+        login.interactable = false;
+        StartCoroutine(RegisterUser());
+    }
     private void Update()
     { 
         if(!checkCookie)
@@ -120,6 +125,50 @@ public class LogInPage : MonoBehaviour
 
             Debug.Log("User Data loaded." + token.Data.UserName);
         }
+    }
+
+    IEnumerator RegisterUser()
+    {
+        Debug.Log("Attempting to Register User");
+        form = new WWWForm();
+
+        form.AddField("username", username.text);
+        form.AddField("password", password.text);
+        form.AddField("IsSetToRegister", "Yes"); 
+
+
+        WWW w = new WWW(url, form);
+        yield return w;
+
+        if (w.error != null)
+        {
+            errorMessage.text = "404 not found!";
+            Debug.Log("<color=red>" + w.text + "</color>");//error
+        }
+        else
+        {
+            if (w.isDone)
+            {
+                if (w.text.Contains("error"))
+                {
+                    errorMessage.text = "Invalid username or password!";
+                    Debug.Log("<color=red>" + w.text + "</color>");//error
+                }
+                else
+                {
+                    //open welcome panel
+                    errorMessage.text = "User registered! Please log in above";
+                    Debug.Log(w.text);
+                    Debug.Log("<color=green>" + w.text + "</color>");//user exist
+                    
+                }
+            }
+        }
+
+        login.interactable = true;
+
+
+        w.Dispose();
     }
 
     IEnumerator Login()
