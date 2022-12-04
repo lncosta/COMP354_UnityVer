@@ -11,11 +11,29 @@ public class Recommendation
 
 	public List<BookData> getRecommendations(List<BookData> booksDatabase) // Will return the first 10 books after sorting the whole database
     {
-		user.buildScores();
-		booksDatabase.Sort(bookComparer);
+		List<BookData> recommendations;
+		IEnumerable<BookData> doNotRec = user.getShelf(ShelfType.DONOTREC).GetBooks(); // Get the books that shouldn't be recommended
+		int next = 0; // The next book to add from the sorted DB
 
-		return booksDatabase.GetRange(0,10);
+		user.buildScores(); // Creates the score of each author/Genre inside the user's shelves
+		booksDatabase.Sort(bookComparer); // Sort the database according to the scores
+		
+		// Adds the next book in line, or skips it if it is banned
+		while(recommendations.Count < 10)
+        {
+            if (doNotRec.Contains(booksDatabase[next])
+			{
+				next++;
+            }
+            else
+            {
+				recommendations.Add(booksDatabase[next]);
 
+			}
+
+		}
+
+		return recommendations;
 	}
 
 	private int bookComparer(BookData b1, BookData b2) // Compares the score of two books

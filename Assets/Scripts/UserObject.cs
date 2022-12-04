@@ -12,7 +12,7 @@ public class UserObject : MonoBehaviour
     private Dictionary<Genre, int> genreScores; // The score for each genre present in the user premade shelves
 
     // getShelf() Explores the shelves of the user to obtain the requested one
-    private Shelf getShelf(ShelfType shelftype)
+    public Shelf getShelf(ShelfType shelftype)
     {
         List<Shelf> CustomShelves = Data.CustomShelves;
         foreach (Shelf shelf in CustomShelves)
