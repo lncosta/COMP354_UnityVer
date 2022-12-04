@@ -9,6 +9,8 @@ public class LogOut : MonoBehaviour
     [SerializeField] GameObject logIn;
     [SerializeField] GameObject app;
 
+    [SerializeField] Timer autosave;
+
     [DllImport("__Internal")]
     private static extern void deleteCookie(string name);
 
@@ -16,19 +18,35 @@ public class LogOut : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        autosave = gameObject.AddComponent<Timer>();
+        autosave.timeDefault = 5000;
+        autosave.running = false;
+        autosave.timeLeft = 0; 
+        autosave.Reset(); 
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!autosave.running)
+        { //Autosave if inactive for too long
+            
+            StartCoroutine(Register());
+           
+            autosave.Reset(); 
+        }
         
     }
 
     public void OnLogoutButtonClicked()
     {
-        
-        StartCoroutine(Register());
+
+        if (!autosave.running)
+        {
+            return; 
+        }
+
+            StartCoroutine(Register());
     }
 
     IEnumerator Register()
@@ -64,11 +82,20 @@ public class LogOut : MonoBehaviour
                 }
                 else
                 {
-                    //open welcom panel
-                    logIn.SetActive(true);
-                    Debug.Log("<color=green>" + w.text + "User Data Saved" + "</color>");//user exist
-                    deleteCookie("user");
-                    app.SetActive(false);
+                    if (!autosave.running)
+                    {
+                        Debug.Log("<color=green>" + w.text + "User Data Saved" + "</color>");//user exist
+                        
+                    }
+                    else
+                    {
+                        //open welcom panel
+                        logIn.SetActive(true);
+                        Debug.Log("<color=green>" + w.text + "User Data Saved" + "</color>");//user exist
+                        deleteCookie("user");
+                        app.SetActive(false);
+                    }
+                   
                     
 
                 }

@@ -28,6 +28,9 @@ public class ShelfManager : MonoBehaviour
     public TMP_Dropdown moveToShelf;
 
 
+    public TextMeshProUGUI userName;
+
+
 
 
     private void OnEnable()
@@ -39,6 +42,8 @@ public class ShelfManager : MonoBehaviour
 
         AppManager.LoadBooks();
         populateDrops();
+
+        userName.text = "User: " + AppManager.CurrentUser.Data.UserName; 
 
 
     }
