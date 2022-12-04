@@ -21,8 +21,10 @@ public class ShelfSlot : MonoBehaviour
     public bool isRecommended = false;
     public bool canBeRecommended = true;
 
-    public BookData thisBook;
+    public BookObject thisBook;
     public ShelfManager thisShelfManager;
+
+    public List<Sprite> bookCoversPerGenre; 
 
 
 
@@ -37,17 +39,39 @@ public class ShelfSlot : MonoBehaviour
         
     }
 
-    public void Create(BookData book, ShelfManager newManager)
+    public void Create(BookObject book, ShelfManager newManager)
     {
         thisBook = book;
         thisShelfManager = newManager;
 
-        bookCover.sprite = thisBook?.bookCover;
+        if (thisBook != null)
+        {
+            if (thisBook.Data.bookCover != null) {
+                //bookCover.sprite = thisBook.Data.bookCover;
+                AddCoverOfType(thisBook);
+            }
+            else
+            {
+                AddCoverOfType(thisBook); 
+            }
+           
+
+        }
+
+    }
+
+    public void AddCoverOfType(BookObject book)
+    {
+        Debug.Log((int)book.Data.genre);
+        book.Data.bookCover = bookCoversPerGenre[(int)book.Data.genre];
+        bookCover.sprite = bookCoversPerGenre[(int)book.Data.genre]; 
     }
 
     public void ClickAction()
     {
-        if(thisBook == null) { return; }
-        thisShelfManager.BookWasSelected(thisBook.title + "\n" + thisBook.author + "\n" + thisBook.genre.ToString(), thisBook.isFavorite, thisBook);
+        if (thisBook != null)
+        {
+            thisShelfManager.BookWasSelected(thisBook.Data.title + "\n" + thisBook.Data.author + "\n"  + thisBook.Data.genre.ToString(),thisBook.Data.isFavorite, thisBook); 
+        }
     }
 }

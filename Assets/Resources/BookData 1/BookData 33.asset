@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad1a58de9bebc7a47a1bb57d21a5839b, type: 3}
+  m_Name: BookData 33
+  m_EditorClassIdentifier: 
+  id: 57
+  title: A Changeling for All Seasons (Changeling Seasons #1)
+  shelf:
+    type: 0
+    shelfName: 
+    booksHeld: []
+    ids: []
+  isFavorite: 0
+  isRecommended: 0
+  canBeRecommended: 1
+  genre: 0
+  author: Angela Knight/Sahara Kelly/Judy Mays/Marteeka Karland/Kate Douglas/Shelby
+    Morgen/Lacey Savage/Kate Hill/Willa Okati
+  rating: 3.76
+  bookCover: {fileID: 0}

@@ -4,7 +4,8 @@ using UnityEngine;
 using System.Linq;
 
 [System.Serializable]
-public class UserObject : MonoBehaviour
+[SerializeField]
+public class UserObject
 {
     [SerializeField] UserData _data;
     public UserData Data { get => _data; }
@@ -153,4 +154,5 @@ public class UserObject : MonoBehaviour
 
         return genreScores;
     }
+    [SerializeField] public UserData Data { get => _data; set { _data = value; } }
 }

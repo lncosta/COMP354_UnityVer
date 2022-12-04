@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor; 
 
 public class AppManager : MonoBehaviour
 {
     static UserObject _currentUser;
-    public static UserObject CurrentUser { get => _currentUser; }
+    public static UserObject CurrentUser { get => _currentUser; set { _currentUser = value; } }
 
-    public static List<Shelf> shelves;
 
 
     public GameObject loginCanvas;
@@ -15,21 +15,36 @@ public class AppManager : MonoBehaviour
 
     public int currentPage;
 
-    public static List<BookData> bookMasterList;
+    public static List<BookObject> bookMasterList;
 
-    private void Awake() {
+    public static bool refresh = false; 
+
+    
+    private void Awake()
+    {
+       
+    }
+
+    public static void LoadBooks() {
         const string BOOK_PATH = "BookData";
+
+        //Debug.Log(Application.dataPath + BOOK_PATH);
         BookData[] loadedBooks = Resources.LoadAll<BookData>(BOOK_PATH);
-        bookMasterList = new List<BookData>(loadedBooks.Length);
+        bookMasterList = new List<BookObject>();
 
-        foreach (var book in loadedBooks) {
-            bookMasterList.Add(book);
+        foreach (var book in loadedBooks)
+        {
+            BookObject toAdd = new BookObject();
+            toAdd.Data = book;
+            bookMasterList.Add(toAdd);
         }
-    }
 
-    [SerializeField] List<BookData> nonGeneuineBookMasterListForThePurposesOfDisplayOnly;
-    private void Start() {
+        Debug.Log("Books loaded:"  + bookMasterList.Count);
+
+    }
+    /*[SerializeField] List<BookData> nonGeneuineBookMasterListForThePurposesOfDisplayOnly;
+    private void Start()
+    {
         nonGeneuineBookMasterListForThePurposesOfDisplayOnly = bookMasterList;
-    }
-
+    }*/
 }

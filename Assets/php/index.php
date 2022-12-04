@@ -4,31 +4,74 @@
 	
 	function getUserData($username, $password){
 		GLOBAL $con;
-
-		$sql = "SELECT userData FROM User WHERE username=? AND password=?";
+		$enc = sha1($password); 
+		$sql = "SELECT userData, username FROM user WHERE username=? AND password=?";
 		$st = $con->prepare($sql);
 
 		$st->execute(array($username, sha1($password)));
 		$all = $st->fetchAll();
 
-		if(count($all) > 0){
-			echo $all[0]["userData"];
+		if(count($all) >0){
+
+			echo $all[0]['userData'];
+			
+			
 		}
-		exit();
+		else{
+			echo "error";
+		}
+
+		
+		
+		
+		
+		
+	}
+
+		
+	function setUserData($username, $password){
+		GLOBAL $con;
+		$enc = sha1($password); 
+		$sql = ("INSERT INTO user (username, password, email, to_read_shelf, reading_shelf, read_shelf, favorite_shelf, recommendation_shelf, userData) VALUES ('$username','$enc','$username','1','1','1','1','1','')");
+		$st = $con->prepare($sql);
+
+		try{
+			$st->execute();
+			$all=$st->fetchAll();
+			if (count($all) > 0){
+
+				echo "User Registered!";
+			}
+
+			exit();
+			
+		} catch(PDOException $e){
+			echo "error".$sql."<br>".$e->getMessage();
+		}
+
+			
 	}
 
 	function pushUserData($data, $username, $password){
 		GLOBAL $con;
 
-		$sql = "UPDATE User SET userData=? WHERE username=? AND password=?";
+		$sql = "UPDATE User SET userData='$data' WHERE username='$username'";
 		$st = $con->prepare($sql);
 
 		try{
-			$st->execute(array($data, $username, sha1($password)));
+			$st->execute();
+			$all=$st->fetchAll();
+			if (count($all) > 0){
+
+				echo $all[0]['userData'];
+			}
+
+			exit();
+			
 		} catch(PDOException $e){
 			echo $sql."<br>".$e->getMessage();
 		}
-		exit();
+		
 	}
 
 	function Login($username, $password){
@@ -41,12 +84,16 @@
 		$all=$st->fetchAll();
 		if (count($all) == 1){
 			echo "SERVER: ID#".$all[0]["username"];
-			exit();
+			echo "SERVER: Login successful!";
+			
+		}
+		else{
+			//if username or password are empty strings
+			
+			echo "error - Duplicate users. Contact admin!";
 		}
 
-		//if username or password are empty strings
-		echo "SERVER: Login successful!";
-		exit();
+		
 	}
 
 
@@ -54,10 +101,18 @@
 	isset($_POST["password"]) && !empty($_POST["password"])){
 		
 		pushUserData($_POST["data"], $_POST["username"], $_POST["password"]);
-	} else if (isset($_POST["username"]) && !empty($_POST["username"]) && 
+	} 
+	else if(isset($_POST["username"]) && !empty($_POST["username"]) && 
+	isset($_POST["password"]) && !empty($_POST["password"]) && isset($_POST["IsSetToRegister"] ) && !empty($_POST["IsSetToRegister"])){
+		setUserData($_POST["username"], $_POST["password"]);
+	}
+	else if (isset($_POST["username"]) && !empty($_POST["username"]) && 
 		isset($_POST["password"]) && !empty($_POST["password"])){
 
 		getUserData($_POST["username"], $_POST["password"]);
+	}
+	else{
+		echo "error - Empty fields!";
 	}
 
 	// getUserData("johndoe", "johndoe");
