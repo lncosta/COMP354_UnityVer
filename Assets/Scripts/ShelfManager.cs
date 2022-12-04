@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Linq;
 
 public class ShelfManager : MonoBehaviour
 {
@@ -31,7 +32,9 @@ public class ShelfManager : MonoBehaviour
     public TextMeshProUGUI userName;
 
 
-    public Recommendation recManager; 
+    public Recommendation recManager;
+
+    public List<Toggle> toggles; 
 
 
 
@@ -88,20 +91,16 @@ public class ShelfManager : MonoBehaviour
     
     
 
-    public List<List<BookObject>> sortByGenre(ShelfType type)
+    public void sortByGenre()
     {
-        Shelf currentShelf = null;
-        foreach (Shelf shelf in AppManager.CurrentUser.Data.CustomShelves)
+       if(currentShelf == null)
         {
-            if (shelf.type == type)
-            {
-                currentShelf = shelf;
-            }
+            return; 
         }
-        if (currentShelf == null)
-        {
-            return null;
-        }
+        Shelf prevShelf = null;
+
+        prevShelf = currentShelf;
+
 
         IEnumerable<BookObject> currentBooks = currentShelf.GetBooks();
         List<BookObject> fiction = new List<BookObject>();
@@ -151,16 +150,48 @@ public class ShelfManager : MonoBehaviour
 
 
         // Add all book lists together
-        List<List<BookObject>> output = new List<List<BookObject>>(7);
-        output.Add(romance);
-        output.Add(fiction);
-        output.Add(horror);
-        output.Add(historical);
-        output.Add(action);
-        output.Add(thriller);
-        output.Add(comedy);
-        output.Add(children);
-        return output;
+        List<BookObject> output = new List<BookObject>();
+
+        if (toggles[1].isOn)
+        {
+            output.AddRange(romance);
+        }
+
+        if (toggles[0].isOn)
+        {
+            output.AddRange(fiction);
+        }
+        if (toggles[2].isOn)
+        {
+            output.AddRange(horror);
+        }
+        if (toggles[3].isOn)
+        {
+            output.AddRange(historical);
+        }
+        if (toggles[4].isOn)
+        {
+            output.AddRange(action);
+        }
+        if (toggles[5].isOn)
+        {
+            output.AddRange(thriller);
+        }
+        if (toggles[6].isOn)
+        {
+            output.AddRange(comedy);
+        }
+        if (toggles[7].isOn)
+        {
+            output.AddRange(children);
+        }
+
+        currentShelf = new Shelf();
+        output =output.Distinct().ToList(); //Remove duplicates
+        currentShelf.booksHeld = output;
+        Refresh();
+        currentShelf = prevShelf; 
+        return;
     }
 
 
