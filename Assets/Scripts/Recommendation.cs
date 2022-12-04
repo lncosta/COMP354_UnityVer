@@ -27,15 +27,11 @@ public class Recommendation
 		// Adds the next book in line, or skips it if it is banned
 		while(recommendations.Count < 10)
         {
-            if (doNotRecId.Contains(booksDatabase[next].Data.id))
+            if ( !(doNotRecId.Contains(booksDatabase[next].Data.id)) )
 			{
-				next++;
-            }
-            else
-            {
 				recommendations.Add(booksDatabase[next]);
-
 			}
+			next++;
 
 		}
 
