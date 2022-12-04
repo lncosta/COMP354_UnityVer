@@ -9,14 +9,14 @@ public class Recommendation
 		//user = appManager.getCurrentUser; // Need a way to recover the current user of the app
 	}
 
-	public List<BookData> getRecommendations(List<BookData> booksDatabase) // Will return the first 10 books after sorting the whole database
+	public List<BookObject> getRecommendations(List<BookObject> booksDatabase) // Will return the first 10 books after sorting the whole database
     {
-		List<BookData> recommendations = new List<BookData>();
-		IEnumerable<BookData> doNotRec = user.getShelf(ShelfType.DONOTREC).GetBooks(); // Get the books that shouldn't be recommended
+		List<BookObject> recommendations = new List<BookObject>();
+		IEnumerable<BookObject> doNotRec = user.getShelf(ShelfType.DONOTREC).GetBooks(); // Get the books that shouldn't be recommended
 		List<string> doNotRecId = new List<string>();
-		foreach(BookData book in doNotRec)
+		foreach(BookObject book in doNotRec)
         {
-			doNotRecId.Add(book.id);
+			doNotRecId.Add(book.Data.id);
 
 		}
 		int next = 0; // The next book to add from the sorted DB
@@ -27,7 +27,7 @@ public class Recommendation
 		// Adds the next book in line, or skips it if it is banned
 		while(recommendations.Count < 10)
         {
-            if (doNotRecId.Contains(booksDatabase[next].id))
+            if (doNotRecId.Contains(booksDatabase[next].Data.id))
 			{
 				next++;
             }
@@ -42,7 +42,7 @@ public class Recommendation
 		return recommendations;
 	}
 
-	private int bookComparer(BookData b1, BookData b2) // Compares the score of two books
+	private int bookComparer(BookObject b1, BookObject b2) // Compares the score of two books
     {
 		return (user.GetBookScore(b1) - user.GetBookScore(b2)+rnd.Next(-2, 2)); // Add an element of randomness in the sorting
     }

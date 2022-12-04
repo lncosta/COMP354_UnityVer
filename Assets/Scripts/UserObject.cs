@@ -8,7 +8,7 @@ using System.Linq;
 public class UserObject
 {
     [SerializeField] UserData _data;
-    public UserData Data { get => _data; }
+    [SerializeField] public UserData Data { get => _data; set { _data = value; } }
     private Dictionary<string, int> authorScores; // The score for each author present in the user premade shelves
     private Dictionary<Genre, int> genreScores; // The score for each genre present in the user premade shelves
 
@@ -28,10 +28,10 @@ public class UserObject
     }
 
     // GetBookScore(): This returns a sum of the scores of the book's author and the book's genre. 0 if the book is in a shelf
-    public int GetBookScore(BookData book)
+    public int GetBookScore(BookObject book)
     {
-        string author = book.author;
-        Genre genre = book.genre;
+        string author = book.Data.author;
+        Genre genre = book.Data.genre;
         //string author = string.Empty;
         //Genre genre = 0;
 
@@ -101,20 +101,20 @@ public class UserObject
     // ShelfAuthorScore(): Scans a premade shelf and increases the score of the authors it contains
     private void ShelfAuthorScore(ref Dictionary<string, int> scores, Shelf shelf, int increment)
     {
-        IEnumerable<BookData> booksHeld = shelf.GetBooks(); // Need a method to recover the books in a shelf
+        IEnumerable<BookObject> booksHeld = shelf.GetBooks(); // Need a method to recover the books in a shelf
 
-        foreach (BookData book in booksHeld) {
-            IncrementScore(ref scores, book.author, increment);
+        foreach (BookObject book in booksHeld) {
+            IncrementScore(ref scores, book.Data.author, increment);
         }
     }
 
     // ShelfGenreScore(): Scans a premade shelf and increases the score of the genres it contains
     private void ShelfGenreScore(ref Dictionary<Genre, int> scores, Shelf shelf, int increment)
     { 
-        IEnumerable<BookData> booksHeld = shelf.GetBooks();
+        IEnumerable<BookObject> booksHeld = shelf.GetBooks();
 
-        foreach (BookData book in booksHeld) {
-            IncrementScore(ref scores, book.genre, increment);
+        foreach (BookObject book in booksHeld) {
+            IncrementScore(ref scores, book.Data.genre, increment);
         }
     }
 
@@ -154,5 +154,5 @@ public class UserObject
 
         return genreScores;
     }
-    [SerializeField] public UserData Data { get => _data; set { _data = value; } }
+    
 }

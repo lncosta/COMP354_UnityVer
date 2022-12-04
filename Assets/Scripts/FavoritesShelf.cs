@@ -3,7 +3,7 @@
 public class FavoritesShelf : Shelf {
     
     private void Awake() {
-        BookData.OnFavorite += AddBook;
-        BookData.OnUnfavorite += RemoveBook;
+        BookObject.OnFavorite += AddBook;
+        BookObject.OnUnfavorite += RemoveBook;
     }
 }
