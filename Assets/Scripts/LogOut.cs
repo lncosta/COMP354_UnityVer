@@ -38,6 +38,12 @@ public class LogOut : MonoBehaviour
         
     }
 
+    public void OnSaveButtonClicked()
+    {
+
+        StartCoroutine(Save());
+    }
+
     public void OnLogoutButtonClicked()
     {
 
@@ -97,6 +103,52 @@ public class LogOut : MonoBehaviour
                     }
                    
                     
+
+                }
+            }
+        }
+
+
+        w.Dispose();
+
+    }
+
+    IEnumerator Save()
+    {
+        var json = JsonUtility.ToJson(AppManager.CurrentUser);
+        WWWForm form = new WWWForm();
+        form.AddField("username", AppManager.CurrentUser.Data.UserName);
+        Debug.Log(json);
+        form.AddField("password", AppManager.CurrentUser.Data.Password);
+        form.AddField("data", json);
+
+        //UserObject token = new UserObject();
+
+        //JsonUtility.FromJsonOverwrite(json, token);
+        //Debug.Log("Data from token: " + token.Data.CustomShelves[0].booksHeld.ToString());
+
+        WWW w = new WWW(url, form);
+        yield return w;
+
+        if (w.error != null)
+        {
+
+            Debug.Log("<color=red>" + w.text + "</color>");//error
+        }
+        else
+        {
+            if (w.isDone)
+            {
+                if (w.text.Contains("error"))
+                {
+
+                    Debug.Log("<color=red>" + w.text + "</color>");//error
+                }
+                else
+                {
+
+                    Debug.Log("<color=green>" + w.text + "User Data Saved" + "</color>");//user exist
+                   
 
                 }
             }
